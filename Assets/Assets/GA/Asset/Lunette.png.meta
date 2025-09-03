@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0f3d2c4676a83c74090d81fbd3c6aa30
+guid: 5b408cbe53b98e944b7073db3716bc72
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4017913471602642613
-    second: Coquillage_0
+      213: 7200433081375175640
+    second: Lunette_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Coquillage_0
+      name: Lunette_0
       rect:
         serializedVersion: 2
-        x: 600
-        y: 69
-        width: 720
-        height: 789
+        x: 632
+        y: 381
+        width: 656
+        height: 232
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5bec12db30f72c730800000000000000
-      internalID: 4017913471602642613
+      spriteID: 8d3b65cecb31de360800000000000000
+      internalID: 7200433081375175640
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Coquillage_0: 4017913471602642613
+      Lunette_0: 7200433081375175640
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
