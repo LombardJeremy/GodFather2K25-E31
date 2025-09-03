@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 #if MM_CINEMACHINE
 using Cinemachine;
+=======
+﻿using UnityEngine;
+#if MM_CINEMACHINE
+using Cinemachine;
+#elif MM_CINEMACHINE3
+using Unity.Cinemachine;
+>>>>>>> origin/Dev
 #endif
 using MoreMountains.Feedbacks;
 
@@ -12,7 +20,11 @@ namespace MoreMountains.FeedbacksForThirdParty
 	/// Add this to a Cinemachine virtual camera and it'll be able to listen to MMCinemachinePriorityEvent, usually triggered by a MMFeedbackCinemachineTransition
 	/// </summary>
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Cinemachine/MMCinemachinePriorityListener")]
+<<<<<<< HEAD
 	#if MM_CINEMACHINE
+=======
+	#if MM_CINEMACHINE || MM_CINEMACHINE3
+>>>>>>> origin/Dev
 	[RequireComponent(typeof(CinemachineVirtualCameraBase))]
 	#endif
 	public class MMCinemachinePriorityListener : MonoBehaviour
@@ -40,19 +52,40 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMFEnumCondition("ChannelMode", (int)MMChannelModes.MMChannel)]
 		public MMChannel MMChannelDefinition = null;
 
+<<<<<<< HEAD
 		#if MM_CINEMACHINE
 		protected CinemachineVirtualCameraBase _camera;
 		protected int _initialPriority;
+=======
+		#if MM_CINEMACHINE || MM_CINEMACHINE3
+		protected CinemachineVirtualCameraBase _camera;
+		protected int _initialPriority;
+		#endif
+>>>>>>> origin/Dev
         
 		/// <summary>
 		/// On Awake we store our virtual camera
 		/// </summary>
 		protected virtual void Awake()
 		{
+<<<<<<< HEAD
 			_camera = this.gameObject.GetComponent<CinemachineVirtualCameraBase>();
 			_initialPriority = _camera.Priority;
 		}
 
+=======
+			#if MM_CINEMACHINE || MM_CINEMACHINE3
+			_camera = this.gameObject.GetComponent<CinemachineVirtualCameraBase>();
+			#endif
+			#if MM_CINEMACHINE 
+			_initialPriority = _camera.Priority;
+			#elif MM_CINEMACHINE3
+			_initialPriority = _camera.Priority.Value; 
+			#endif
+		}
+
+		#if MM_CINEMACHINE || MM_CINEMACHINE3
+>>>>>>> origin/Dev
 		/// <summary>
 		/// When we get an event we change our priorities if needed
 		/// </summary>
@@ -69,10 +102,17 @@ namespace MoreMountains.FeedbacksForThirdParty
 			{
 				if (restore)
 				{
+<<<<<<< HEAD
 					_camera.Priority = _initialPriority;	
 					return;
 				}
 				_camera.Priority = newPriority;
+=======
+					SetPriority(_initialPriority);	
+					return;
+				}
+				SetPriority(newPriority);
+>>>>>>> origin/Dev
 			}
 			else
 			{
@@ -80,6 +120,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 				{
 					if (restore)
 					{
+<<<<<<< HEAD
 						_camera.Priority = _initialPriority;	
 						return;
 					}
@@ -87,13 +128,40 @@ namespace MoreMountains.FeedbacksForThirdParty
 				}
 			}
 		}
+=======
+						SetPriority(_initialPriority);	
+						return;
+					}
+					SetPriority(0);
+				}
+			}
+		}
+		#endif
+
+		protected virtual void SetPriority(int newPriority)
+		{
+			#if MM_CINEMACHINE 
+			_camera.Priority = newPriority;
+			#elif MM_CINEMACHINE3
+			PrioritySettings prioritySettings = _camera.Priority;
+			prioritySettings.Value = newPriority;
+			_camera.Priority = prioritySettings;
+			#endif
+		}
+>>>>>>> origin/Dev
 
 		/// <summary>
 		/// On enable we start listening for events
 		/// </summary>
 		protected virtual void OnEnable()
 		{
+<<<<<<< HEAD
 			MMCinemachinePriorityEvent.Register(OnMMCinemachinePriorityEvent);
+=======
+			#if MM_CINEMACHINE || MM_CINEMACHINE3
+			MMCinemachinePriorityEvent.Register(OnMMCinemachinePriorityEvent);
+			#endif
+>>>>>>> origin/Dev
 		}
 
 		/// <summary>
@@ -101,9 +169,16 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// </summary>
 		protected virtual void OnDisable()
 		{
+<<<<<<< HEAD
 			MMCinemachinePriorityEvent.Unregister(OnMMCinemachinePriorityEvent);
 		}
 		#endif
+=======
+			#if MM_CINEMACHINE || MM_CINEMACHINE3
+			MMCinemachinePriorityEvent.Unregister(OnMMCinemachinePriorityEvent);
+			#endif
+		}
+>>>>>>> origin/Dev
 	}
 
 	/// <summary>
@@ -111,7 +186,11 @@ namespace MoreMountains.FeedbacksForThirdParty
 	/// </summary>
 	public struct MMCinemachinePriorityEvent
 	{
+<<<<<<< HEAD
 		#if MM_CINEMACHINE
+=======
+		#if MM_CINEMACHINE || MM_CINEMACHINE3
+>>>>>>> origin/Dev
 		static private event Delegate OnEvent;
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)] private static void RuntimeInitialization() { OnEvent = null; }
 		static public void Register(Delegate callback) { OnEvent += callback; }

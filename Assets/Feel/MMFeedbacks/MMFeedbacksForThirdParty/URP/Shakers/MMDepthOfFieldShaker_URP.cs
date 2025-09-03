@@ -169,6 +169,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 				_originalRemapFocalLengthOne = RemapFocalLengthOne;
 			}
 
+<<<<<<< HEAD
 			TimescaleMode = timescaleMode;
 			ShakeDuration = duration;
 			RelativeValues = relativeValues;
@@ -182,6 +183,24 @@ namespace MoreMountains.FeedbacksForThirdParty
 			RemapFocalLengthZero = remapFocalLengthMin;
 			RemapFocalLengthOne = remapFocalLengthMax;
 			ForwardDirection = forwardDirection;
+=======
+			if (!OnlyUseShakerValues)
+			{
+				TimescaleMode = timescaleMode;
+				ShakeDuration = duration;
+				RelativeValues = relativeValues;
+				ShakeFocusDistance = focusDistance;
+				RemapFocusDistanceZero = remapFocusDistanceMin;
+				RemapFocusDistanceOne = remapFocusDistanceMax;
+				ShakeAperture = aperture;
+				RemapApertureZero = remapApertureMin;
+				RemapApertureOne = remapApertureMax;
+				ShakeFocalLength = focalLength;
+				RemapFocalLengthZero = remapFocalLengthMin;
+				RemapFocalLengthOne = remapFocalLengthMax;
+				ForwardDirection = forwardDirection;
+			}
+>>>>>>> origin/Dev
 
 			Play();
 		}

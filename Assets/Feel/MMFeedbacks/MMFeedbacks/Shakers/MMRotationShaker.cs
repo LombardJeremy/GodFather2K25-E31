@@ -107,7 +107,11 @@ namespace MoreMountains.Feedbacks
 			GrabLocalRotation();
 		}
 
+<<<<<<< HEAD
 		protected virtual void GrabLocalRotation()
+=======
+		public virtual void GrabLocalRotation()
+>>>>>>> origin/Dev
 		{
 			switch (Mode)
 			{
@@ -266,6 +270,7 @@ namespace MoreMountains.Feedbacks
 				_originalAttenuationCurve = AttenuationCurve;
 			}
 
+<<<<<<< HEAD
 			TimescaleMode = timescaleMode;
 			ShakeDuration = duration;
 			ShakeSpeed = shakeSpeed;
@@ -282,6 +287,28 @@ namespace MoreMountains.Feedbacks
 			UseAttenuation = useAttenuation;
 			AttenuationCurve = attenuationCurve;
 			ForwardDirection = forwardDirection;
+=======
+			if (!OnlyUseShakerValues)
+			{
+				TimescaleMode = timescaleMode;
+				ShakeDuration = duration;
+				ShakeSpeed = shakeSpeed;
+				ShakeRange = shakeRange * feedbacksIntensity * ComputeRangeIntensity(useRange, rangeDistance,
+					useRangeFalloff, rangeFalloff, remapRangeFalloff, rangePosition);
+				ShakeMainDirection = shakeMainDirection;
+				RandomizeDirection = randomizeDirection;
+				ShakeAltDirection = shakeAltDirection;
+				RandomizeDirectionOnPlay = randomizeDirectionOnPlay;
+				AddDirectionalNoise = addDirectionalNoise;
+				DirectionalNoiseStrengthMin = directionalNoiseStrengthMin;
+				DirectionalNoiseStrengthMax = directionalNoiseStrengthMax;
+				RandomnessSeed = randomnessSeed;
+				RandomizeSeedOnShake = randomizeSeedOnShake;
+				UseAttenuation = useAttenuation;
+				AttenuationCurve = attenuationCurve;
+				ForwardDirection = forwardDirection;
+			}
+>>>>>>> origin/Dev
 
 			Play();
 		}

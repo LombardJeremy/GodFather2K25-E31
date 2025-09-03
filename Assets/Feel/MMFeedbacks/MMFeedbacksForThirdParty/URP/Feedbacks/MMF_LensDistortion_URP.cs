@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
+=======
+﻿using UnityEngine;
+using MoreMountains.Feedbacks;
+using UnityEngine.Scripting.APIUpdating;
+#if MM_URP
+using UnityEngine.Rendering.Universal;
+#endif
+>>>>>>> origin/Dev
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
@@ -14,6 +23,10 @@ namespace MoreMountains.FeedbacksForThirdParty
 	#if MM_URP
 	[FeedbackPath("PostProcess/Lens Distortion URP")]
 	#endif
+<<<<<<< HEAD
+=======
+	[MovedFrom(false, null, "MoreMountains.Feedbacks.URP")]
+>>>>>>> origin/Dev
 	[FeedbackHelp("This feedback allows you to control URP lens distortion intensity over time. " +
 	              "It requires you have in your scene an object with a Volume " +
 	              "with Lens Distortion active, and a MMLensDistortionShaker_URP component.")]
@@ -24,6 +37,11 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// sets the inspector color for this feedback
 		#if UNITY_EDITOR
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.PostProcessColor; } }
+<<<<<<< HEAD
+=======
+		public override bool HasCustomInspectors => true;
+		public override bool HasAutomaticShakerSetup => true;
+>>>>>>> origin/Dev
 		#endif
 
 		/// the duration of this feedback is the duration of the shake
@@ -112,5 +130,18 @@ namespace MoreMountains.FeedbacksForThirdParty
 			
 			MMLensDistortionShakeEvent_URP.Trigger(Intensity, FeedbackDuration, RemapIntensityZero, RemapIntensityOne, RelativeIntensity, restore:true, channelData: ChannelData);
 		}
+<<<<<<< HEAD
+=======
+		
+		/// <summary>
+		/// Automaticall sets up the post processing profile and shaker
+		/// </summary>
+		public override void AutomaticShakerSetup()
+		{
+			#if MM_URP && UNITY_EDITOR
+			MMURPHelpers.GetOrCreateVolume<LensDistortion, MMLensDistortionShaker_URP>(Owner, "LensDistortion");
+			#endif
+		}
+>>>>>>> origin/Dev
 	}
 }

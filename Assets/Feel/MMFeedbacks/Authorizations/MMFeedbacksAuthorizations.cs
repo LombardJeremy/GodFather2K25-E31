@@ -42,7 +42,11 @@ namespace MoreMountains.Feedbacks
 
 		public bool CameraShake = true;
 		public bool CameraZoom = true;
+<<<<<<< HEAD
 		#if MM_CINEMACHINE
+=======
+		#if MM_CINEMACHINE || MM_CINEMACHINE3
+>>>>>>> origin/Dev
 		public bool CinemachineImpulse = true;
 		public bool CinemachineImpulseClear = true;
 		public bool CinemachineImpulseSource = true;
@@ -194,7 +198,11 @@ namespace MoreMountains.Feedbacks
 		[MMInspectorGroup("TextMesh Pro", true, 30)] [MMInspectorButton("ToggleTextMeshPro")]
 		public bool ToggleTextMeshProButton;
 
+<<<<<<< HEAD
 		#if MM_TEXTMESHPRO
+=======
+		#if (MM_TEXTMESHPRO || MM_UGUI2)
+>>>>>>> origin/Dev
 		public bool TMPAlpha = true;
 		public bool TMPCharacterSpacing = true;
 		public bool TMPColor = true;
@@ -246,7 +254,11 @@ namespace MoreMountains.Feedbacks
 		{
 			CameraShake = !CameraShake;
 			CameraZoom = !CameraZoom;
+<<<<<<< HEAD
 			#if MM_CINEMACHINE
+=======
+			#if MM_CINEMACHINE || MM_CINEMACHINE3
+>>>>>>> origin/Dev
 			CinemachineImpulse = !CinemachineImpulse;
 			CinemachineImpulseClear = !CinemachineImpulseClear;
 			CinemachineImpulseSource = !CinemachineImpulseSource;
@@ -397,7 +409,11 @@ namespace MoreMountains.Feedbacks
 			VideoPlayer = !VideoPlayer;
 		}
 		
+<<<<<<< HEAD
 		#if MM_TEXTMESHPRO
+=======
+		#if (MM_TEXTMESHPRO || MM_UGUI2)
+>>>>>>> origin/Dev
 		private void ToggleTextMeshPro()
 		{
 			TMPAlpha = !TMPAlpha;
@@ -422,6 +438,7 @@ namespace MoreMountains.Feedbacks
 		private void Start()
 		{
 			MMF_Animation.FeedbackTypeAuthorized = AnimationParameter;
+<<<<<<< HEAD
 			MMFeedbackAnimation.FeedbackTypeAuthorized = AnimationParameter;
 			  
 			MMF_AnimatorSpeed.FeedbackTypeAuthorized = AnimatorSpeed;
@@ -749,23 +766,158 @@ namespace MoreMountains.Feedbacks
 			
 			#if MM_HDRP
 			
+=======
+			MMF_AnimatorSpeed.FeedbackTypeAuthorized = AnimatorSpeed;
+			MMF_AudioFilterDistortion.FeedbackTypeAuthorized = AudioFilterDistortion;
+			MMF_AudioFilterEcho.FeedbackTypeAuthorized = AudioFilterEcho;
+			MMF_AudioFilterHighPass.FeedbackTypeAuthorized = AudioFilterHighPass;
+			MMF_AudioFilterLowPass.FeedbackTypeAuthorized = AudioFilterLowPass;
+			MMF_AudioFilterReverb.FeedbackTypeAuthorized = AudioFilterReverb;
+			MMF_AudioMixerSnapshotTransition.FeedbackTypeAuthorized = AudioMixerSnapshotTransition;
+			MMF_AudioSource.FeedbackTypeAuthorized = AudioSource;
+			MMF_AudioSourcePitch.FeedbackTypeAuthorized = AudioSourcePitch;
+			MMF_AudioSourceStereoPan.FeedbackTypeAuthorized = AudioSourceStereoPan;
+			MMF_AudioSourceVolume.FeedbackTypeAuthorized = AudioSourceVolume;
+			MMF_Playlist.FeedbackTypeAuthorized = MMPlaylist;
+			MMF_MMSoundManagerAllSoundsControl.FeedbackTypeAuthorized = MMSoundManagerAllSoundsControl;
+			MMF_MMSoundManagerSaveLoad.FeedbackTypeAuthorized = MMSoundManagerSaveAndLoad;
+			MMF_MMSoundManagerSound.FeedbackTypeAuthorized = MMSoundManagerSound;
+			MMF_MMSoundManagerSoundControl.FeedbackTypeAuthorized = MMSoundManagerSoundControl;
+			MMF_MMSoundManagerSoundFade.FeedbackTypeAuthorized = MMSoundManagerSoundFade;
+			MMF_MMSoundManagerTrackControl.FeedbackTypeAuthorized = MMSoundManagerTrackControl;
+			MMF_MMSoundManagerTrackFade.FeedbackTypeAuthorized = MMSoundManagerTrackFade;
+			MMF_Sound.FeedbackTypeAuthorized = Sound;
+			MMF_CameraShake.FeedbackTypeAuthorized = CameraShake;
+			MMF_CameraZoom.FeedbackTypeAuthorized = CameraZoom;
+		  
+			#if MM_CINEMACHINE || MM_CINEMACHINE3
+			MMF_CinemachineImpulse.FeedbackTypeAuthorized = CinemachineImpulse;
+			MMF_CinemachineImpulseClear.FeedbackTypeAuthorized = CinemachineImpulseClear;
+			MMF_CinemachineImpulseSource.FeedbackTypeAuthorized = CinemachineImpulseSource;
+			MMF_CinemachineTransition.FeedbackTypeAuthorized = CinemachineTransition;
+			#endif
+		  
+			MMF_CameraClippingPlanes.FeedbackTypeAuthorized = ClippingPlanes;
+			MMF_CameraFieldOfView.FeedbackTypeAuthorized = FieldOfView;
+			MMF_CameraOrthographicSize.FeedbackTypeAuthorized = OrthographicSize;
+			MMF_DebugComment.FeedbackTypeAuthorized = Comment;
+			MMF_DebugLog.FeedbackTypeAuthorized = Log;
+			MMF_MMGameEvent.FeedbackTypeAuthorized = MMGameEvent;
+			MMF_Events.FeedbackTypeAuthorized = UnityEvents;
+			MMF_Broadcast.FeedbackTypeAuthorized = Broadcast;
+			MMF_Collider.FeedbackTypeAuthorized = Collider;
+			MMF_Collider2D.FeedbackTypeAuthorized = Collider2D;
+			MMF_Destroy.FeedbackTypeAuthorized = DestroyTargetObject;
+			MMF_Enable.FeedbackTypeAuthorized = EnableBehaviour;
+			MMF_FloatController.FeedbackTypeAuthorized = FloatController;
+			MMF_InstantiateObject.FeedbackTypeAuthorized = InstantiateObject;
+			MMF_RadioSignal.FeedbackTypeAuthorized = MMRadioSignal;
+			MMF_Rigidbody.FeedbackTypeAuthorized = Rigidbody;
+			MMF_Rigidbody2D.FeedbackTypeAuthorized = Rigidbody2D;
+			MMF_SetActive.FeedbackTypeAuthorized = SetActive;
+		  
+			#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED
+			MMF_Haptics.FeedbackTypeAuthorized = HapticClip;
+			MMF_NVContinuous.FeedbackTypeAuthorized = HapticContinuous;
+			MMF_NVControl.FeedbackTypeAuthorized = HapticControl;
+			MMF_NVEmphasis.FeedbackTypeAuthorized = HapticEmphasis;
+			MMF_NVPreset.FeedbackTypeAuthorized = HapticPreset;
+			#endif
+  
+			MMF_Light.FeedbackTypeAuthorized = Light;
+			MMF_Looper.FeedbackTypeAuthorized = Looper;
+			MMF_LooperStart.FeedbackTypeAuthorized = LooperStart;
+			MMF_ParticlesInstantiation.FeedbackTypeAuthorized = ParticlesInstantiation;
+			MMF_Particles.FeedbackTypeAuthorized = ParticlesPlay;
+			MMF_HoldingPause.FeedbackTypeAuthorized = HoldingPause;
+			MMF_Pause.FeedbackTypeAuthorized = Pause;
+			MMF_Flicker.FeedbackTypeAuthorized = Flicker;
+			MMF_Fog.FeedbackTypeAuthorized = Fog;
+			MMF_Material.FeedbackTypeAuthorized = Material;
+			MMF_Blink.FeedbackTypeAuthorized = MMBlink;
+			MMF_ShaderGlobal.FeedbackTypeAuthorized = ShaderGlobal;
+			MMF_Skybox.FeedbackTypeAuthorized = Skybox;
+			MMF_SpriteRenderer.FeedbackTypeAuthorized = SpriteRenderer;
+			MMF_TextureOffset.FeedbackTypeAuthorized = TextureOffset;
+			MMF_TextureScale.FeedbackTypeAuthorized = TextureScale;
+			MMF_LoadScene.FeedbackTypeAuthorized = LoadScene;
+			MMF_UnloadScene.FeedbackTypeAuthorized = UnloadScene;
+			MMF_FreezeFrame.FeedbackTypeAuthorized = FreezeFrame;
+			MMF_TimescaleModifier.FeedbackTypeAuthorized = TimescaleModifier;
+			MMF_DestinationTransform.FeedbackTypeAuthorized = Destination;
+			MMF_Position.FeedbackTypeAuthorized = Position;
+			MMF_PositionShake.FeedbackTypeAuthorized = PositionShake;
+			MMF_RotatePositionAround.FeedbackTypeAuthorized = RotatePositionAround;
+			MMF_Rotation.FeedbackTypeAuthorized = Rotation;
+			MMF_RotationShake.FeedbackTypeAuthorized = RotationShake;
+			MMF_Scale.FeedbackTypeAuthorized = Scale;
+			MMF_ScaleShake.FeedbackTypeAuthorized = ScaleShake;
+			MMF_SquashAndStretch.FeedbackTypeAuthorized = SquashAndStretch;
+			MMF_Wiggle.FeedbackTypeAuthorized = Wiggle;
+			MMF_CanvasGroup.FeedbackTypeAuthorized = CanvasGroup;
+			MMF_CanvasGroupBlocksRaycasts.FeedbackTypeAuthorized = CanvasGroupBlocksRaycasts;
+			  
+			MMF_FloatingText.FeedbackTypeAuthorized = FloatingText;
+			MMF_RectTransformAnchor.FeedbackTypeAuthorized = RectTransformAnchor;
+			MMF_RectTransformOffset.FeedbackTypeAuthorized = RectTransformOffset;
+			MMF_RectTransformPivot.FeedbackTypeAuthorized = RectTransformPivot;
+			MMF_RectTransformSizeDelta.FeedbackTypeAuthorized = RectTransformSizeDelta;
+			MMF_VideoPlayer.FeedbackTypeAuthorized = VideoPlayer;
+			
+			#if MM_UI
+			MMF_ShaderController.FeedbackTypeAuthorized = ShaderController;
+			MMF_Graphic.FeedbackTypeAuthorized = Graphic;
+			MMF_GraphicCrossFade.FeedbackTypeAuthorized = GraphicCrossFade;
+			MMF_Image.FeedbackTypeAuthorized = Image;
+			MMF_ImageAlpha.FeedbackTypeAuthorized = ImageAlpha;
+			MMF_ImageFill.FeedbackTypeAuthorized = ImageFill;
+			MMF_ImageRaycastTarget.FeedbackTypeAuthorized = ImageRaycastTarget;
+			MMF_ImageTextureOffset.FeedbackTypeAuthorized = ImageTextureOffset;
+			MMF_ImageTextureScale.FeedbackTypeAuthorized = ImageTextureScale;
+			MMF_Text.FeedbackTypeAuthorized = Text;
+			MMF_TextColor.FeedbackTypeAuthorized = TextColor;
+			MMF_TextFontSize.FeedbackTypeAuthorized = TextFontSize;
+			MMF_Fade.FeedbackTypeAuthorized = Fade;
+			MMF_Flash.FeedbackTypeAuthorized = Flash;
+			#endif
+			
+			#if MM_POSTPROCESSING
+			MMF_Bloom.FeedbackTypeAuthorized = Bloom;
+			MMF_ChromaticAberration.FeedbackTypeAuthorized = ChromaticAberration;
+			MMF_ColorGrading.FeedbackTypeAuthorized = ColorGrading;
+			MMF_DepthOfField.FeedbackTypeAuthorized = DepthOfField;
+			MMF_GlobalPPVolumeAutoBlend.FeedbackTypeAuthorized = GlobalPPVolumeAutoBlend;
+			MMF_LensDistortion.FeedbackTypeAuthorized = LensDistortion;
+			MMF_Vignette.FeedbackTypeAuthorized = Vignette;
+			MMF_PPMovingFilter.FeedbackTypeAuthorized = PPMovingFilter;
+			#endif
+			
+			#if MM_HDRP
+>>>>>>> origin/Dev
 			MMF_Bloom_HDRP.FeedbackTypeAuthorized = Bloom;
 			MMF_ChromaticAberration_HDRP.FeedbackTypeAuthorized = ChromaticAberration;
 			MMF_LensDistortion_HDRP.FeedbackTypeAuthorized = LensDistortion;
 			MMF_ColorAdjustments_HDRP.FeedbackTypeAuthorized = ColorGrading;
 			MMF_LensDistortion_HDRP.FeedbackTypeAuthorized = LensDistortion;
 			MMF_Vignette_HDRP.FeedbackTypeAuthorized = Vignette;
+<<<<<<< HEAD
 			
 			#endif
 			
 			#if MM_URP
 			
+=======
+			#endif
+			
+			#if MM_URP
+>>>>>>> origin/Dev
 			MMF_Bloom_URP.FeedbackTypeAuthorized = Bloom;
 			MMF_ChromaticAberration_URP.FeedbackTypeAuthorized = ChromaticAberration;
 			MMF_LensDistortion_URP.FeedbackTypeAuthorized = LensDistortion;
 			MMF_ColorAdjustments_URP.FeedbackTypeAuthorized = ColorGrading;
 			MMF_LensDistortion_URP.FeedbackTypeAuthorized = LensDistortion;
 			MMF_Vignette_URP.FeedbackTypeAuthorized = Vignette;
+<<<<<<< HEAD
 			
 			#endif
 			
@@ -807,6 +959,24 @@ namespace MoreMountains.Feedbacks
 			  
 			MMF_TMPTextReveal.FeedbackTypeAuthorized = TMPTextReveal;
 			MMFeedbackTMPTextReveal.FeedbackTypeAuthorized = TMPTextReveal;
+=======
+			#endif
+			
+			#if (MM_TEXTMESHPRO || MM_UGUI2)
+			MMF_TMPAlpha.FeedbackTypeAuthorized = TMPAlpha;
+			MMF_TMPCharacterSpacing.FeedbackTypeAuthorized = TMPCharacterSpacing;
+			MMF_TMPColor.FeedbackTypeAuthorized = TMPColor;
+			MMF_TMPCountTo.FeedbackTypeAuthorized = TMPCountTo;
+			MMF_TMPDilate.FeedbackTypeAuthorized = TMPDilate;
+			MMF_TMPFontSize.FeedbackTypeAuthorized = TMPFontSize;
+			MMF_TMPLineSpacing.FeedbackTypeAuthorized = TMPLineSpacing;
+			MMF_TMPOutlineColor.FeedbackTypeAuthorized = TMPOutlineColor;
+			MMF_TMPOutlineWidth.FeedbackTypeAuthorized = TMPOutlineWidth;
+			MMF_TMPParagraphSpacing.FeedbackTypeAuthorized = TMPParagraphSpacing;
+			MMF_TMPSoftness.FeedbackTypeAuthorized = TMPSoftness;
+			MMF_TMPText.FeedbackTypeAuthorized = TMPText;
+			MMF_TMPTextReveal.FeedbackTypeAuthorized = TMPTextReveal;
+>>>>>>> origin/Dev
 			#endif
 		}
 	}

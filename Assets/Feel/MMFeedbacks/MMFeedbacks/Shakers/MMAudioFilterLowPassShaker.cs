@@ -113,6 +113,7 @@ namespace MoreMountains.Feedbacks
 				_originalRelativeLowPass = RelativeLowPass;
 			}
 
+<<<<<<< HEAD
 			TimescaleMode = timescaleMode;
 			ShakeDuration = duration;
 			ShakeLowPass = lowPassCurve;
@@ -120,6 +121,18 @@ namespace MoreMountains.Feedbacks
 			RemapLowPassOne = remapMax * feedbacksIntensity;
 			RelativeLowPass = relativeLowPass;
 			ForwardDirection = forwardDirection;
+=======
+			if (!OnlyUseShakerValues)
+			{
+				TimescaleMode = timescaleMode;
+				ShakeDuration = duration;
+				ShakeLowPass = lowPassCurve;
+				RemapLowPassZero = remapMin * feedbacksIntensity;
+				RemapLowPassOne = remapMax * feedbacksIntensity;
+				RelativeLowPass = relativeLowPass;
+				ForwardDirection = forwardDirection;
+			}
+>>>>>>> origin/Dev
 
 			Play();
 		}

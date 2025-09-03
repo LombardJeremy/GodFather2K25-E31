@@ -206,6 +206,7 @@ namespace MoreMountains.Feedbacks
 				_originalLookAtDirection = LookAtDirection;
 			}
 
+<<<<<<< HEAD
 			TimescaleMode = timescaleMode;
 			ShakeDuration = duration;
 			LookAtTween = lookAtTween;
@@ -218,6 +219,23 @@ namespace MoreMountains.Feedbacks
 			LookAtTargetWorldPosition = lookAtTargetWorldPosition;
 			LookAtDirection = lookAtDirection;
 			ForwardDirection = forwardDirection;
+=======
+			if (!OnlyUseShakerValues)
+			{
+				TimescaleMode = timescaleMode;
+				ShakeDuration = duration;
+				LookAtTween = lookAtTween;
+				LockXAxis = lockXAxis;
+				LockYAxis = lockYAxis;
+				LockZAxis = lockZAxis;
+				UpwardVector = upwardVector;
+				LookAtTargetMode = lookAtTargetMode;
+				LookAtTarget = lookAtTarget;
+				LookAtTargetWorldPosition = lookAtTargetWorldPosition;
+				LookAtDirection = lookAtDirection;
+				ForwardDirection = forwardDirection;
+			}
+>>>>>>> origin/Dev
 
 			Play();
 		}

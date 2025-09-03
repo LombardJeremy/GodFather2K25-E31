@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
+<<<<<<< HEAD
+=======
+using UnityEngine.Scripting.APIUpdating;
+>>>>>>> origin/Dev
 
 namespace MoreMountains.Feedbacks
 {
@@ -11,6 +15,10 @@ namespace MoreMountains.Feedbacks
 	[AddComponentMenu("")]
 	[FeedbackHelp("This feedback lets you trigger a blink on an MMBlink object.")]
 	[FeedbackPath("Renderer/MMBlink")]
+<<<<<<< HEAD
+=======
+	[MovedFrom(false, null, "MoreMountains.Feedbacks.MMTools")]
+>>>>>>> origin/Dev
 	public class MMF_Blink : MMF_Feedback
 	{
 		/// sets the inspector color for this feedback
@@ -35,6 +43,12 @@ namespace MoreMountains.Feedbacks
 		/// the target object to blink
 		[Tooltip("the target object to blink")]
 		public MMBlink TargetBlink;
+<<<<<<< HEAD
+=======
+		/// an optional list of extra target objects to blink
+		[Tooltip("an optional list of extra target objects to blink")]
+		public List<MMBlink> ExtraTargetBlinks;
+>>>>>>> origin/Dev
 		/// the selected mode for this feedback
 		[Tooltip("the selected mode for this feedback")]
 		public BlinkModes BlinkMode = BlinkModes.Toggle;
@@ -62,6 +76,7 @@ namespace MoreMountains.Feedbacks
 			{
 				return;
 			}
+<<<<<<< HEAD
 			TargetBlink.TimescaleMode = ComputedTimescaleMode;
 			switch (BlinkMode)
 			{
@@ -73,6 +88,32 @@ namespace MoreMountains.Feedbacks
 					break;
 				case BlinkModes.Stop:
 					TargetBlink.StopBlinking();
+=======
+			HandleBlink(TargetBlink);
+			foreach (MMBlink blink in ExtraTargetBlinks)
+			{
+				HandleBlink(blink);
+			}
+		}
+
+		/// <summary>
+		/// Toggles, starts or stops blink on the target
+		/// </summary>
+		/// <param name="target"></param>
+		protected virtual void HandleBlink(MMBlink target)
+		{
+			target.TimescaleMode = ComputedTimescaleMode;
+			switch (BlinkMode)
+			{
+				case BlinkModes.Toggle:
+					target.ToggleBlinking();
+					break;
+				case BlinkModes.Start:
+					target.StartBlinking();
+					break;
+				case BlinkModes.Stop:
+					target.StopBlinking();
+>>>>>>> origin/Dev
 					break;
 			}
 		}
@@ -88,6 +129,13 @@ namespace MoreMountains.Feedbacks
 			}
 			
 			TargetBlink.StopBlinking();
+<<<<<<< HEAD
+=======
+			foreach (MMBlink blink in ExtraTargetBlinks)
+			{
+				blink.StopBlinking();
+			}
+>>>>>>> origin/Dev
 		}
 		
 		/// <summary>

@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 ﻿using System.Collections;
+=======
+﻿#if MM_UI
+using System.Collections;
+>>>>>>> origin/Dev
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+<<<<<<< HEAD
+=======
+using UnityEngine.Scripting.APIUpdating;
+>>>>>>> origin/Dev
 
 namespace MoreMountains.Feedbacks
 {
@@ -11,6 +20,10 @@ namespace MoreMountains.Feedbacks
 	/// </summary>
 	[AddComponentMenu("")]
 	[FeedbackHelp("This feedback will let you change the color of a target Image over time. You can also use it to command one or many MMImageShakers.")]
+<<<<<<< HEAD
+=======
+	[MovedFrom(false, null, "MoreMountains.Feedbacks")]
+>>>>>>> origin/Dev
 	[FeedbackPath("UI/Image")]
 	public class MMF_Image : MMF_Feedback
 	{
@@ -67,10 +80,17 @@ namespace MoreMountains.Feedbacks
 		public bool EnableOnPlay = true;
 		/// if this is true, the target disabled after the color over time change ends
 		[Tooltip("if this is true, the target disabled after the color over time change ends")]
+<<<<<<< HEAD
 		public bool DisableOnSequenceEnd = true;
 		/// if this is true, the target will be disabled when this feedbacks is stopped
 		[Tooltip("if this is true, the target will be disabled when this feedbacks is stopped")] 
 		public bool DisableOnStop = true;
+=======
+		public bool DisableOnSequenceEnd = false;
+		/// if this is true, the target will be disabled when this feedbacks is stopped
+		[Tooltip("if this is true, the target will be disabled when this feedbacks is stopped")] 
+		public bool DisableOnStop = false;
+>>>>>>> origin/Dev
 
 		protected Coroutine _coroutine;
 		protected Color _initialColor;
@@ -122,6 +142,10 @@ namespace MoreMountains.Feedbacks
 					{
 						return;
 					}
+<<<<<<< HEAD
+=======
+					if (_coroutine != null) { Owner.StopCoroutine(_coroutine); }
+>>>>>>> origin/Dev
 					_coroutine = Owner.StartCoroutine(ImageSequence());
 					break;
 			}
@@ -184,6 +208,15 @@ namespace MoreMountains.Feedbacks
 			{
 				Turn(false);    
 			}
+<<<<<<< HEAD
+=======
+
+			if (_coroutine != null)
+			{
+				Owner.StopCoroutine(_coroutine);	
+			}
+			
+>>>>>>> origin/Dev
 			_coroutine = null;
 		}
 
@@ -209,4 +242,9 @@ namespace MoreMountains.Feedbacks
 			BoundImage.color = _initialColor;
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+}
+#endif
+>>>>>>> origin/Dev

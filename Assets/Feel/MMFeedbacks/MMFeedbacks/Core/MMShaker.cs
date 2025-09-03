@@ -37,6 +37,12 @@ namespace MoreMountains.Feedbacks
 		/// if this is true, this shaker will always reset target values, regardless of how it was called
 		[Tooltip("if this is true, this shaker will always reset target values, regardless of how it was called")]
 		public bool AlwaysResetTargetValuesAfterShake = false;
+<<<<<<< HEAD
+=======
+		/// if this is true, this shaker will ignore any value passed in an event that triggered it, and will instead use the values set on its inspector
+		[Tooltip("if this is true, this shaker will ignore any value passed in an event that triggered it, and will instead use the values set on its inspector")]
+		public bool OnlyUseShakerValues = false;
+>>>>>>> origin/Dev
 		/// a cooldown, in seconds, after a shake, during which no other shake can start
 		[Tooltip("a cooldown, in seconds, after a shake, during which no other shake can start")]
 		public float CooldownBetweenShakes = 0f;
@@ -50,13 +56,21 @@ namespace MoreMountains.Feedbacks
 
 		[HideInInspector] 
 		public TimescaleModes TimescaleMode = TimescaleModes.Scaled;
+<<<<<<< HEAD
         
         
+=======
+
+>>>>>>> origin/Dev
 		public virtual float GetTime() { return (TimescaleMode == TimescaleModes.Scaled) ? Time.time : Time.unscaledTime; }
 		public virtual float GetDeltaTime() { return (TimescaleMode == TimescaleModes.Scaled) ? Time.deltaTime : Time.unscaledDeltaTime; }
 		public virtual MMChannelData ChannelData => new MMChannelData(ChannelMode, Channel, MMChannelDefinition);
         
+<<<<<<< HEAD
 		public bool ListeningToEvents => _listeningToEvents;
+=======
+		public virtual bool ListeningToEvents => _listeningToEvents;
+>>>>>>> origin/Dev
 
 		[HideInInspector]
 		internal bool _listeningToEvents = false;
@@ -89,6 +103,17 @@ namespace MoreMountains.Feedbacks
 		}
 
 		/// <summary>
+<<<<<<< HEAD
+=======
+		/// Call this externally if you need to force a new initialization
+		/// </summary>
+		public virtual void ForceInitialization()
+		{
+			Initialization();
+		}
+
+		/// <summary>
+>>>>>>> origin/Dev
 		/// Starts shaking the values
 		/// </summary>
 		public virtual void StartShaking()
@@ -146,6 +171,22 @@ namespace MoreMountains.Feedbacks
 				Shaking = false;
 				ShakeComplete();
 			}
+<<<<<<< HEAD
+=======
+
+			if (PermanentShake)
+			{
+				if (_journey < 0)
+				{
+					_journey = ShakeDuration;
+				}
+
+				if (_journey > ShakeDuration)
+				{
+					_journey = 0;
+				}
+			}
+>>>>>>> origin/Dev
 		}
 
 		/// <summary>
@@ -180,6 +221,15 @@ namespace MoreMountains.Feedbacks
 			return newValue;
 		}
 
+<<<<<<< HEAD
+=======
+		protected virtual Color ShakeGradient(Gradient gradient)
+		{
+			float remappedTime = MMFeedbacksHelpers.Remap(_journey, 0f, ShakeDuration, 0f, 1f);
+			return gradient.Evaluate(remappedTime);
+		}
+
+>>>>>>> origin/Dev
 		/// <summary>
 		/// Resets the values on the target
 		/// </summary>
@@ -201,6 +251,12 @@ namespace MoreMountains.Feedbacks
 		/// </summary>
 		protected virtual void ShakeComplete()
 		{
+<<<<<<< HEAD
+=======
+			_journey = ForwardDirection ? ShakeDuration : 0f;
+			Shake();
+			
+>>>>>>> origin/Dev
 			if (_resetTargetValuesAfterShake || AlwaysResetTargetValuesAfterShake)
 			{
 				ResetTargetValues();

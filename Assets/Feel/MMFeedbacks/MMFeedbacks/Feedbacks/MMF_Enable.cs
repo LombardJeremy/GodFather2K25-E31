@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
+=======
+using UnityEngine.Scripting.APIUpdating;
+>>>>>>> origin/Dev
 
 namespace MoreMountains.Feedbacks
 {
@@ -10,6 +14,10 @@ namespace MoreMountains.Feedbacks
 	[AddComponentMenu("")]
 	[FeedbackHelp("This feedback allows you to change the state of a behaviour on a target gameobject from active to inactive (or the opposite), on init, play, stop or reset. " +
 	              "For each of these you can specify if you want to force a state (enabled or disabled), or toggle it (enabled becomes disabled, disabled becomes enabled).")]
+<<<<<<< HEAD
+=======
+	[MovedFrom(false, null, "MoreMountains.Feedbacks")]
+>>>>>>> origin/Dev
 	[FeedbackPath("GameObject/Enable Behaviour")]
 	public class MMF_Enable : MMF_Feedback
 	{
@@ -30,6 +38,12 @@ namespace MoreMountains.Feedbacks
 		/// the gameobject we want to change the active state of
 		[Tooltip("the gameobject we want to change the active state of")]
 		public Behaviour TargetBehaviour;
+<<<<<<< HEAD
+=======
+		/// a list of extra gameobjects we want to change the active state of
+		[Tooltip("a list of extra gameobjects we want to change the active state of")]
+		public List<Behaviour> ExtraTargetBehaviours;
+>>>>>>> origin/Dev
 		/// whether or not we should alter the state of the target object on init
 		[Tooltip("whether or not we should alter the state of the target object on init")]
 		public bool SetStateOnInit = false;
@@ -142,6 +156,7 @@ namespace MoreMountains.Feedbacks
 		/// <param name="state"></param>
 		protected virtual void SetStatus(PossibleStates state)
 		{
+<<<<<<< HEAD
 			_initialState = TargetBehaviour.enabled;
 			switch (state)
 			{
@@ -153,6 +168,33 @@ namespace MoreMountains.Feedbacks
 					break;
 				case PossibleStates.Toggle:
 					TargetBehaviour.enabled = !TargetBehaviour.enabled;
+=======
+			SetStatus(state, TargetBehaviour);
+			foreach (Behaviour extra in ExtraTargetBehaviours)
+			{
+				SetStatus(state, extra);
+			}
+		}
+
+		/// <summary>
+		/// Sets the specified status on the target Behaviour
+		/// </summary>
+		/// <param name="state"></param>
+		/// <param name="target"></param>
+		protected virtual void SetStatus(PossibleStates state, Behaviour target)
+		{
+			_initialState = target.enabled;
+			switch (state)
+			{
+				case PossibleStates.Enabled:
+					target.enabled = NormalPlayDirection ? true : false;
+					break;
+				case PossibleStates.Disabled:
+					target.enabled = NormalPlayDirection ? false : true;
+					break;
+				case PossibleStates.Toggle:
+					target.enabled = !target.enabled;
+>>>>>>> origin/Dev
 					break;
 			}
 		}
@@ -168,6 +210,13 @@ namespace MoreMountains.Feedbacks
 			}
 			
 			TargetBehaviour.enabled = _initialState;
+<<<<<<< HEAD
+=======
+			foreach (Behaviour extra in ExtraTargetBehaviours)
+			{
+				extra.enabled = _initialState;
+			}
+>>>>>>> origin/Dev
 		}
 	}
 }

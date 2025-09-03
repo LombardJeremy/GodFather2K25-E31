@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,16 @@ using MoreMountains.Feedbacks;
 #if MM_CINEMACHINE
 using Cinemachine;
 #endif
+=======
+﻿using UnityEngine;
+using MoreMountains.Feedbacks;
+#if MM_CINEMACHINE
+using Cinemachine;
+#elif MM_CINEMACHINE3
+using Unity.Cinemachine;
+#endif
+using UnityEngine.Scripting.APIUpdating;
+>>>>>>> origin/Dev
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
@@ -15,9 +26,16 @@ namespace MoreMountains.FeedbacksForThirdParty
 	/// Then all you have to do is pick a channel and a new priority on your feedback, and play it. Magic transition!
 	/// </summary>
 	[AddComponentMenu("")]
+<<<<<<< HEAD
 	#if MM_CINEMACHINE
 	[FeedbackPath("Camera/Cinemachine Transition")]
 	#endif
+=======
+	#if MM_CINEMACHINE || MM_CINEMACHINE3
+	[FeedbackPath("Camera/Cinemachine Transition")]
+	#endif
+	[MovedFrom(false, null, "MoreMountains.Feedbacks.Cinemachine")]
+>>>>>>> origin/Dev
 	[FeedbackHelp("This feedback will let you change the priorities of your cameras. It requires a bit of setup : " +
 	              "adding a MMCinemachinePriorityListener to your different cameras, with unique Channel values on them. " +
 	              "Optionally, you can add a MMCinemachinePriorityBrainListener on your Cinemachine Brain to handle different transition types and durations. " +
@@ -36,8 +54,21 @@ namespace MoreMountains.FeedbacksForThirdParty
 		#if MM_CINEMACHINE
 		/// the duration of this feedback is the duration of the shake
 		public override float FeedbackDuration { get { return ApplyTimeMultiplier(BlendDefintion.m_Time); } set { BlendDefintion.m_Time = value; } }
+<<<<<<< HEAD
 		public override bool HasAutomatedTargetAcquisition => true;
 		protected override void AutomateTargetAcquisition() => TargetVirtualCamera = FindAutomatedTarget<CinemachineVirtualCamera>();
+=======
+		#elif MM_CINEMACHINE3
+		public override float FeedbackDuration { get { return ApplyTimeMultiplier(BlendDefintion.Time); } set { BlendDefintion.Time = value; } }
+		#endif
+		#if MM_CINEMACHINE || MM_CINEMACHINE3
+		public override bool HasAutomatedTargetAcquisition => true;
+		#endif
+		#if MM_CINEMACHINE
+		protected override void AutomateTargetAcquisition() => TargetVirtualCamera = FindAutomatedTarget<CinemachineVirtualCamera>();
+		#elif MM_CINEMACHINE3
+		protected override void AutomateTargetAcquisition() => TargetCinemachineCamera = FindAutomatedTarget<CinemachineCamera>();
+>>>>>>> origin/Dev
 		#endif
 		public override bool HasChannel => true;
 
@@ -50,6 +81,14 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Tooltip("the virtual camera to target")]
 		[MMFEnumCondition("Mode", (int)Modes.Binding)]
 		public CinemachineVirtualCamera TargetVirtualCamera;
+<<<<<<< HEAD
+=======
+		#elif MM_CINEMACHINE3 
+		/// the Cinemachine camera to target
+		[Tooltip("the Cinemachine camera to target")]
+		[MMFEnumCondition("Mode", (int)Modes.Binding)]
+		public CinemachineCamera TargetCinemachineCamera;
+>>>>>>> origin/Dev
 		#endif
 		/// whether or not to reset the target's values after shake
 		[Tooltip("whether or not to reset the target's values after shake")]
@@ -65,7 +104,11 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// whether or not to apply a new blend
 		[Tooltip("whether or not to apply a new blend")]
 		public bool ForceTransition = false;
+<<<<<<< HEAD
 		#if MM_CINEMACHINE
+=======
+		#if MM_CINEMACHINE || MM_CINEMACHINE3
+>>>>>>> origin/Dev
 		/// the new blend definition to apply
 		[Tooltip("the new blend definition to apply")]
 		[MMFCondition("ForceTransition", true)]
@@ -86,9 +129,21 @@ namespace MoreMountains.FeedbacksForThirdParty
 				return;
 			}
             
+<<<<<<< HEAD
 			#if MM_CINEMACHINE
 			_tempBlend = BlendDefintion;
 			_tempBlend.m_Time = FeedbackDuration;
+=======
+			#if MM_CINEMACHINE || MM_CINEMACHINE3
+			_tempBlend = BlendDefintion;
+			#endif
+			#if MM_CINEMACHINE
+			_tempBlend.m_Time = FeedbackDuration;
+			#elif MM_CINEMACHINE3
+			_tempBlend.Time = FeedbackDuration;
+			#endif
+			#if MM_CINEMACHINE || MM_CINEMACHINE3
+>>>>>>> origin/Dev
 			if (Mode == Modes.Event)
 			{
 				MMCinemachinePriorityEvent.Trigger(ChannelData, ForceMaxPriority, NewPriority, ForceTransition, _tempBlend, ResetValuesAfterTransition, ComputedTimescaleMode);    
@@ -96,11 +151,29 @@ namespace MoreMountains.FeedbacksForThirdParty
 			else
 			{
 				MMCinemachinePriorityEvent.Trigger(ChannelData, ForceMaxPriority, 0, ForceTransition, _tempBlend, ResetValuesAfterTransition, ComputedTimescaleMode); 
+<<<<<<< HEAD
 				TargetVirtualCamera.Priority = NewPriority;
+=======
+				SetPriority(NewPriority);
+>>>>>>> origin/Dev
 			}
 			#endif
 		}
 		
+<<<<<<< HEAD
+=======
+		protected virtual void SetPriority(int newPriority)
+		{
+			#if MM_CINEMACHINE 
+			TargetVirtualCamera.Priority = newPriority;
+			#elif MM_CINEMACHINE3
+			PrioritySettings prioritySettings = TargetCinemachineCamera.Priority;
+			prioritySettings.Value = newPriority;
+			TargetCinemachineCamera.Priority = prioritySettings;
+			#endif
+		}
+		
+>>>>>>> origin/Dev
 		/// <summary>
 		/// On restore, we restore our initial state
 		/// </summary>
@@ -110,7 +183,11 @@ namespace MoreMountains.FeedbacksForThirdParty
 			{
 				return;
 			}
+<<<<<<< HEAD
 			#if MM_CINEMACHINE
+=======
+			#if MM_CINEMACHINE || MM_CINEMACHINE3
+>>>>>>> origin/Dev
 			MMCinemachinePriorityEvent.Trigger(ChannelData, ForceMaxPriority, 0, ForceTransition, _tempBlend, ResetValuesAfterTransition, ComputedTimescaleMode, true); 
 			#endif
 		}

@@ -111,6 +111,7 @@ namespace MoreMountains.Feedbacks
 		/// whether or not to animate the X movement of spawned texts
 		[Tooltip("whether or not to animate the X movement of spawned texts")]
 		public bool AnimateX = false;
+<<<<<<< HEAD
 		/// the value to which the x movement curve's zero should be remapped to
 		[Tooltip("the value to which the x movement curve's zero should be remapped to")]
 		[MMCondition("AnimateX", true)] 
@@ -118,6 +119,17 @@ namespace MoreMountains.Feedbacks
 		/// the value to which the x movement curve's one should be remapped to
 		[Tooltip("the value to which the x movement curve's one should be remapped to")]
 		[MMCondition("AnimateX", true)] 
+=======
+		/// the value to which the x movement curve's zero should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness
+		[Tooltip("the value to which the x movement curve's zero should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness")]
+		[MMCondition("AnimateX", true)] 
+		[MMVector("Min", "Max")]
+		public Vector2 RemapXZero = Vector2.zero;
+		/// the value to which the x movement curve's one should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness
+		[Tooltip("the value to which the x movement curve's one should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness")]
+		[MMCondition("AnimateX", true)] 
+		[MMVector("Min", "Max")]
+>>>>>>> origin/Dev
 		public Vector2 RemapXOne = Vector2.one;
 		/// the curve on which to animate the x movement
 		[Tooltip("the curve on which to animate the x movement")]
@@ -126,6 +138,7 @@ namespace MoreMountains.Feedbacks
 		/// whether or not to animate the Y movement of spawned texts
 		[Tooltip("whether or not to animate the Y movement of spawned texts")]
 		public bool AnimateY = true;
+<<<<<<< HEAD
 		/// the value to which the y movement curve's zero should be remapped to
 		[Tooltip("the value to which the y movement curve's zero should be remapped to")]
 		[MMCondition("AnimateY", true)] 
@@ -133,6 +146,17 @@ namespace MoreMountains.Feedbacks
 		/// the value to which the y movement curve's one should be remapped to
 		[Tooltip("the value to which the y movement curve's one should be remapped to")]
 		[MMCondition("AnimateY", true)]
+=======
+		/// the value to which the y movement curve's zero should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness
+		[Tooltip("the value to which the y movement curve's zero should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness")]
+		[MMCondition("AnimateY", true)] 
+		[MMVector("Min", "Max")]
+		public Vector2 RemapYZero = Vector2.zero;
+		/// the value to which the y movement curve's one should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness
+		[Tooltip("the value to which the y movement curve's one should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness")]
+		[MMCondition("AnimateY", true)]
+		[MMVector("Min", "Max")]
+>>>>>>> origin/Dev
 		public Vector2 RemapYOne = new Vector2(5f, 5f);
 		/// the curve on which to animate the y movement
 		[Tooltip("the curve on which to animate the y movement")]
@@ -141,6 +165,7 @@ namespace MoreMountains.Feedbacks
 		/// whether or not to animate the Z movement of spawned texts
 		[Tooltip("whether or not to animate the Z movement of spawned texts")]
 		public bool AnimateZ = false;
+<<<<<<< HEAD
 		/// the value to which the z movement curve's zero should be remapped to
 		[Tooltip("the value to which the z movement curve's zero should be remapped to")]
 		[MMCondition("AnimateZ", true)] 
@@ -148,6 +173,17 @@ namespace MoreMountains.Feedbacks
 		/// the value to which the z movement curve's one should be remapped to
 		[Tooltip("the value to which the z movement curve's one should be remapped to")]
 		[MMCondition("AnimateZ", true)] 
+=======
+		/// the value to which the z movement curve's zero should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness
+		[Tooltip("the value to which the z movement curve's zero should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness")]
+		[MMCondition("AnimateZ", true)] 
+		[MMVector("Min", "Max")]
+		public Vector2 RemapZZero = Vector2.zero;
+		/// the value to which the z movement curve's one should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness
+		[Tooltip("the value to which the z movement curve's one should be remapped to, randomized between its min and max - put the same value in both min and max if you don't want any randomness")]
+		[MMCondition("AnimateZ", true)] 
+		[MMVector("Min", "Max")]
+>>>>>>> origin/Dev
 		public Vector2 RemapZOne = Vector2.one;
 		/// the curve on which to animate the z movement
 		[Tooltip("the curve on which to animate the z movement")]
@@ -284,18 +320,36 @@ namespace MoreMountains.Feedbacks
 		/// <summary>
 		/// On awake we initialize our spawner
 		/// </summary>
+<<<<<<< HEAD
 		protected virtual void Start()
+=======
+		protected virtual void Awake()
+>>>>>>> origin/Dev
 		{
 			Initialization();
 		}
 
 		/// <summary>
+<<<<<<< HEAD
+=======
+		/// On Start we grab our main camera if needed
+		/// </summary>
+		protected virtual void Start()
+		{
+			GrabMainCamera();
+		}
+
+		/// <summary>
+>>>>>>> origin/Dev
 		/// On init, we instantiate our object pool and grab the main camera
 		/// </summary>
 		protected virtual void Initialization()
 		{
 			InstantiateObjectPool();
+<<<<<<< HEAD
 			GrabMainCamera();
+=======
+>>>>>>> origin/Dev
 		}
 
 		/// <summary>

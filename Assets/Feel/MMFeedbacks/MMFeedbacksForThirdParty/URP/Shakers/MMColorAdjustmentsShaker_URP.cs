@@ -236,6 +236,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 				_originalColorFilterCurve = ColorFilterCurve;
 			}
 
+<<<<<<< HEAD
 			TimescaleMode = timescaleMode;
 			ShakeDuration = duration;
 			RelativeValues = relativeValues;
@@ -256,6 +257,31 @@ namespace MoreMountains.FeedbacksForThirdParty
 			ColorFilterDestination = colorFilterDestination;
 			ColorFilterCurve = colorFilterCurve;
 			ForwardDirection = forwardDirection;
+=======
+			if (!OnlyUseShakerValues)
+			{
+				TimescaleMode = timescaleMode;
+				ShakeDuration = duration;
+				RelativeValues = relativeValues;
+				ShakePostExposure = shakePostExposure;
+				RemapPostExposureZero = remapPostExposureZero;
+				RemapPostExposureOne = remapPostExposureOne;
+				ShakeHueShift = shakeHueShift;
+				RemapHueShiftZero = remapHueShiftZero;
+				RemapHueShiftOne = remapHueShiftOne;
+				ShakeSaturation = shakeSaturation;
+				RemapSaturationZero = remapSaturationZero;
+				RemapSaturationOne = remapSaturationOne;
+				ShakeContrast = shakeContrast;
+				RemapContrastZero = remapContrastZero;
+				RemapContrastOne = remapContrastOne;
+				ColorFilterMode = colorFilterMode;
+				ColorFilterGradient = colorFilterGradient;
+				ColorFilterDestination = colorFilterDestination;
+				ColorFilterCurve = colorFilterCurve;
+				ForwardDirection = forwardDirection;
+			}
+>>>>>>> origin/Dev
 
 			Play();
 		}

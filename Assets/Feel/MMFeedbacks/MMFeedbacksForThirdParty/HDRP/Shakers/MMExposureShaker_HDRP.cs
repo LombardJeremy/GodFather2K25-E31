@@ -110,6 +110,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 				_originalRelativeFixedExposure = RelativeIntensity;
 			}
 
+<<<<<<< HEAD
 			TimescaleMode = timescaleMode;
 			ShakeDuration = duration;
 			ShakeFixedExposure = intensity;
@@ -117,6 +118,18 @@ namespace MoreMountains.FeedbacksForThirdParty
 			RemapFixedExposureOne = remapMax * attenuation;
 			RelativeIntensity = relativeIntensity;
 			ForwardDirection = forwardDirection;
+=======
+			if (!OnlyUseShakerValues)
+			{
+				TimescaleMode = timescaleMode;
+				ShakeDuration = duration;
+				ShakeFixedExposure = intensity;
+				RemapFixedExposureZero = remapMin * attenuation;
+				RemapFixedExposureOne = remapMax * attenuation;
+				RelativeIntensity = relativeIntensity;
+				ForwardDirection = forwardDirection;
+			}
+>>>>>>> origin/Dev
 
 			Play();
 		}

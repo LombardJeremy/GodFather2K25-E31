@@ -1,7 +1,17 @@
+<<<<<<< HEAD
 ﻿using System.Collections;	
 using System.Collections.Generic;	
 using UnityEngine;	
 using MoreMountains.Feedbacks;	
+=======
+﻿using UnityEngine;	
+using MoreMountains.Feedbacks;	
+using UnityEngine.Scripting.APIUpdating;
+#if MM_HDRP
+using UnityEngine.Rendering.HighDefinition;
+#endif
+
+>>>>>>> origin/Dev
 namespace MoreMountains.FeedbacksForThirdParty	
 {	
 	/// <summary>	
@@ -13,6 +23,10 @@ namespace MoreMountains.FeedbacksForThirdParty
 	#if MM_HDRP
 	[FeedbackPath("PostProcess/Channel Mixer HDRP")]
 	#endif
+<<<<<<< HEAD
+=======
+	[MovedFrom(false, null, "MoreMountains.Feedbacks.HDRP")]
+>>>>>>> origin/Dev
 	[FeedbackHelp("This feedback allows you to control channel mixer's red, green and blue over time." +
 	              "It requires you have in your scene an object with a Volume" +
 	              "with Channel Mixer active, and a MM Channel Mixer HDRP component.")]
@@ -23,6 +37,11 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// sets the inspector color for this feedback	
 		#if UNITY_EDITOR	
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.PostProcessColor; } }	
+<<<<<<< HEAD
+=======
+		public override bool HasCustomInspectors => true;
+		public override bool HasAutomaticShakerSetup => true;
+>>>>>>> origin/Dev
 		#endif	
 		/// the duration of this feedback is the duration of the shake	
 		public override float FeedbackDuration { get { return ApplyTimeMultiplier(ShakeDuration); } set { ShakeDuration = value;  } }	
@@ -137,5 +156,18 @@ namespace MoreMountains.FeedbacksForThirdParty
 				FeedbackDuration,
 				RelativeIntensity, channelData:ChannelData, restore:true);
 		}
+<<<<<<< HEAD
+=======
+		
+		/// <summary>
+		/// Automaticall sets up the post processing profile and shaker
+		/// </summary>
+		public override void AutomaticShakerSetup()
+		{
+			#if MM_HDRP && UNITY_EDITOR
+			MMHDRPHelpers.GetOrCreateVolume<ChannelMixer, MMChannelMixerShaker_HDRP>(Owner, "Channel Mixer");
+			#endif
+		}
+>>>>>>> origin/Dev
 	}	
 }

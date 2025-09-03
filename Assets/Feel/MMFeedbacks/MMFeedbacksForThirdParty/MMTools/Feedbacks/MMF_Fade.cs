@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
+=======
+﻿#if MM_UI
+using UnityEngine;
+using MoreMountains.Tools;
+using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.UI;
+>>>>>>> origin/Dev
 
 namespace MoreMountains.Feedbacks
 {
@@ -10,6 +18,10 @@ namespace MoreMountains.Feedbacks
 	/// </summary>
 	[AddComponentMenu("")]
 	[FeedbackHelp("This feedback lets you trigger a fade event.")]
+<<<<<<< HEAD
+=======
+	[MovedFrom(false, null, "MoreMountains.Feedbacks.MMTools")]
+>>>>>>> origin/Dev
 	[FeedbackPath("Camera/Fade")]
 	public class MMF_Fade : MMF_Feedback
 	{
@@ -19,6 +31,11 @@ namespace MoreMountains.Feedbacks
 		#if UNITY_EDITOR
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.CameraColor; } }
 		public override string RequiredTargetText { get { return "ID "+ID;  } }
+<<<<<<< HEAD
+=======
+		public override bool HasCustomInspectors => true;
+		public override bool HasAutomaticShakerSetup => true;
+>>>>>>> origin/Dev
 		#endif
 		/// the different possible types of fades
 		public enum FadeTypes { FadeIn, FadeOut, Custom }
@@ -67,6 +84,14 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("the position offset to apply when centering the fade")]
 		public Vector3 PositionOffset;
 
+<<<<<<< HEAD
+=======
+		[Header("Optional Target")] 
+		/// this field lets you bind a specific MMFader to this feedback. If left empty, the feedback will trigger a MMFadeEvent instead, targeting all matching faders. If you fill it, only that specific fader will be targeted.
+		[Tooltip("this field lets you bind a specific MMFader to this feedback. If left empty, the feedback will trigger a MMFadeEvent instead, targeting all matching faders. If you fill it, only that specific fader will be targeted.")]
+		public MMFader TargetFader;
+
+>>>>>>> origin/Dev
 		/// the duration of this feedback is the duration of the fade
 		public override float FeedbackDuration { get { return ApplyTimeMultiplier(Duration); } set { Duration = value;  } }
 
@@ -98,6 +123,7 @@ namespace MoreMountains.Feedbacks
 					_fadeType = FadeTypes.FadeIn;
 				}
 			}
+<<<<<<< HEAD
 			switch (_fadeType)
 			{
 				case FadeTypes.Custom:
@@ -109,6 +135,38 @@ namespace MoreMountains.Feedbacks
 				case FadeTypes.FadeOut:
 					MMFadeOutEvent.Trigger(FeedbackDuration, Curve, ID, IgnoreTimeScale, _position);
 					break;
+=======
+
+			if (TargetFader != null)
+			{
+				switch (_fadeType)
+				{
+					case FadeTypes.Custom:
+						TargetFader.Fade(TargetAlpha, FeedbackDuration, Curve, IgnoreTimeScale);
+						break;
+					case FadeTypes.FadeIn:
+						TargetFader.FadeIn(FeedbackDuration, Curve, IgnoreTimeScale);
+						break;
+					case FadeTypes.FadeOut:
+						TargetFader.FadeOut(FeedbackDuration, Curve, IgnoreTimeScale);
+						break;
+				}
+			}
+			else
+			{
+				switch (_fadeType)
+				{
+					case FadeTypes.Custom:
+						MMFadeEvent.Trigger(FeedbackDuration, TargetAlpha, Curve, ID, IgnoreTimeScale, _position);
+						break;
+					case FadeTypes.FadeIn:
+						MMFadeInEvent.Trigger(FeedbackDuration, Curve, ID, IgnoreTimeScale, _position);
+						break;
+					case FadeTypes.FadeOut:
+						MMFadeOutEvent.Trigger(FeedbackDuration, Curve, ID, IgnoreTimeScale, _position);
+						break;
+				}
+>>>>>>> origin/Dev
 			}
 		}
 
@@ -160,5 +218,40 @@ namespace MoreMountains.Feedbacks
 			}
 			MMFadeStopEvent.Trigger(ID, true);
 		}
+<<<<<<< HEAD
 	}
 }
+=======
+		
+		/// <summary>
+		/// Automatically tries to add a MMFader setup to the scene
+		/// </summary>
+		public override void AutomaticShakerSetup()
+		{
+			if (GameObject.FindObjectOfType<MMFader>() != null)
+			{
+				return;
+			}
+			
+			(Canvas canvas, bool createdNewCanvas) = Owner.gameObject.MMFindOrCreateObjectOfType<Canvas>("FadeCanvas", null);
+			canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+			(Image image, bool createdNewImage) = canvas.gameObject.MMFindOrCreateObjectOfType<Image>("FadeImage", canvas.transform, true);
+			image.raycastTarget = false;
+			image.color = Color.black;
+			
+			RectTransform rectTransform = image.GetComponent<RectTransform>();
+			rectTransform.anchorMin = new Vector2(0f, 0f);
+			rectTransform.anchorMax = new Vector2(1f, 1f);
+			rectTransform.offsetMin = Vector2.zero;
+			rectTransform.offsetMax = Vector2.zero;
+			
+			image.gameObject.AddComponent<MMFader>();
+			image.gameObject.GetComponent<CanvasGroup>().alpha = 0;
+			image.gameObject.GetComponent<CanvasGroup>().interactable = false;
+
+			MMDebug.DebugLogInfo("Added a MMFader to the scene. You're all set.");
+		}
+	}
+}
+#endif
+>>>>>>> origin/Dev

@@ -1,4 +1,8 @@
 ﻿using UnityEngine;
+<<<<<<< HEAD
+=======
+using UnityEngine.Scripting.APIUpdating;
+>>>>>>> origin/Dev
 
 namespace MoreMountains.Feedbacks
 {
@@ -7,6 +11,10 @@ namespace MoreMountains.Feedbacks
 	/// Scale shakers, as the name suggests, are used to shake the scale of a transform, along a direction, with optional noise and other fine control options.
 	/// </summary>
 	[AddComponentMenu("")]
+<<<<<<< HEAD
+=======
+	[MovedFrom(false, null, "MoreMountains.Feedbacks")]
+>>>>>>> origin/Dev
 	[FeedbackPath("Transform/Scale Shake")]
 	[FeedbackHelp("This feedback lets you emit a ScaleShake event. This will be caught by MMScaleShakers (on the specified channel)." +
 	              " Scale shakers, as the name suggests, are used to shake the scale of a transform, along a direction, with optional noise and other fine control options.")]
@@ -17,7 +25,10 @@ namespace MoreMountains.Feedbacks
 		/// sets the inspector color for this feedback
 		#if UNITY_EDITOR
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.TransformColor; } }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/Dev
 		public override string RequiredTargetText => RequiredChannelText;
 		#endif
 		/// returns the duration of the feedback
@@ -25,6 +36,11 @@ namespace MoreMountains.Feedbacks
 		public override bool HasChannel => true;
 		public override bool HasRandomness => true;
 		public override bool HasRange => true;
+<<<<<<< HEAD
+=======
+		public override bool HasAutomatedTargetAcquisition => true;
+		protected override void AutomateTargetAcquisition() => TargetShaker = FindAutomatedTarget<MMScaleShaker>();
+>>>>>>> origin/Dev
 
 		[MMFInspectorGroup("Optional Target", true, 33)]
 		/// a specific (and optional) shaker to target, regardless of its channel

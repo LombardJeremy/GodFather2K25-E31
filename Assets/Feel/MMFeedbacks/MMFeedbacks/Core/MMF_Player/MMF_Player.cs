@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.Tools;
 using UnityEngine;
+<<<<<<< HEAD
+=======
+using UnityEngine.Serialization;
+>>>>>>> origin/Dev
 using Random = UnityEngine.Random;
 
 namespace MoreMountains.Feedbacks
@@ -25,18 +29,36 @@ namespace MoreMountains.Feedbacks
 		}
 
 		public bool KeepPlayModeChanges = false;
+<<<<<<< HEAD
 		[Tooltip("if this is true, the inspector won't refresh while the feedback plays, this saves on performance but feedback inspectors' progress bars for example won't look as smooth")]
 		public bool PerformanceMode = false;
 		[Tooltip("if this is true, StopFeedbacks will be called on all feedbacks on Disable")]
 		public bool ForceStopFeedbacksOnDisable = true;
+=======
+		/// if this is true, the inspector won't refresh while the feedback plays, this saves on performance but feedback inspectors' progress bars for example won't look as smooth
+		[Tooltip("if this is true, the inspector won't refresh while the feedback plays, this saves on performance but feedback inspectors' progress bars for example won't look as smooth")]
+		public bool PerformanceMode = false;
+		/// if this is true, StopFeedbacks will be called on all feedbacks on Disable
+		[Tooltip("if this is true, StopFeedbacks will be called on all feedbacks on Disable")]
+		public bool StopFeedbacksOnDisable = false;
+		/// how many times this player has started playing
+>>>>>>> origin/Dev
 		[Tooltip("how many times this player has started playing")]
 		[MMReadOnly]
 		public int PlayCount = 0;
 
+<<<<<<< HEAD
 		public bool SkippingToTheEnd { get; protected set; }
         
 		protected Type _t;
 		protected float _cachedTotalDuration;
+=======
+		public virtual bool SkippingToTheEnd { get; protected set; }
+        
+		protected Type _t;
+		protected float _cachedTotalDuration;
+		protected bool _initialized = false;
+>>>>>>> origin/Dev
         
 		#endregion
         
@@ -47,6 +69,14 @@ namespace MoreMountains.Feedbacks
 		/// </summary>
 		protected override void Awake()
 		{
+<<<<<<< HEAD
+=======
+			if (AutoInitialization && (AutoPlayOnEnable || AutoPlayOnStart))
+			{
+				InitializationMode = InitializationModes.Awake;
+			}
+			
+>>>>>>> origin/Dev
 			// if our MMFeedbacks is in AutoPlayOnEnable mode, we add a little helper to it that will re-enable it if needed if the parent game object gets turned off and on again
 			if (AutoPlayOnEnable)
 			{
@@ -67,6 +97,10 @@ namespace MoreMountains.Feedbacks
 			ExtraInitializationChecks();
 			CheckForLoops();
 			ComputeCachedTotalDuration();
+<<<<<<< HEAD
+=======
+			PreInitialization();
+>>>>>>> origin/Dev
 		}
 
 		/// <summary>
@@ -113,6 +147,11 @@ namespace MoreMountains.Feedbacks
 		/// </summary>
 		protected override void OnEnable()
 		{
+<<<<<<< HEAD
+=======
+			Events.TriggerOnEnable(this);
+			
+>>>>>>> origin/Dev
 			if (OnlyPlayIfWithinRange)
 			{
 				MMSetFeedbackRangeCenterEvent.Register(OnMMSetFeedbackRangeCenterEvent);	
@@ -152,13 +191,38 @@ namespace MoreMountains.Feedbacks
 			PlayFeedbacks();
 		}
 
+<<<<<<< HEAD
+=======
+		public virtual void PreInitialization()
+		{
+			int count = FeedbacksList.Count;
+			for (int i = 0; i < count; i++)
+			{
+				if (FeedbacksList[i] != null)
+				{
+					FeedbacksList[i].PreInitialization(this, i);
+				}                
+			}
+		}
+
+>>>>>>> origin/Dev
 		/// <summary>
 		/// A public method to initialize the feedback, specifying an owner that will be used as the reference for position and hierarchy by feedbacks
 		/// </summary>
 		/// <param name="owner"></param>
 		/// <param name="feedbacksOwner"></param>
+<<<<<<< HEAD
 		public override void Initialization()
 		{
+=======
+		public override void Initialization(bool forceInitIfPlaying = false)
+		{
+			if (IsPlaying && !forceInitIfPlaying)
+			{
+				return;
+			}
+			
+>>>>>>> origin/Dev
 			SkippingToTheEnd = false;
 			IsPlaying = false;
 			_lastStartAt = -float.MaxValue;
@@ -169,8 +233,26 @@ namespace MoreMountains.Feedbacks
 				if (FeedbacksList[i] != null)
 				{
 					FeedbacksList[i].Initialization(this, i);
+<<<<<<< HEAD
 				}                
 			}
+=======
+				}
+			}
+			
+			Events.TriggerOnInitializationComplete(this);
+
+			_initialized = true;
+		}
+
+		/// <summary>
+		/// When calling the legacy init method that used to specify an owner, we force the MMF Player init to run
+		/// </summary>
+		/// <param name="owner"></param>
+		public override void Initialization(GameObject owner)
+		{
+			Initialization();
+>>>>>>> origin/Dev
 		}
 
 		#endregion
@@ -291,6 +373,17 @@ namespace MoreMountains.Feedbacks
 		/// <param name="feedbacksIntensity"></param>
 		protected override void PlayFeedbacksInternal(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
 		{
+<<<<<<< HEAD
+=======
+			if (AutoInitialization)
+			{
+				if (!_initialized)
+				{
+					Initialization();
+				}
+			}
+			
+>>>>>>> origin/Dev
 			if (!IsAllowedToPlay(position))
 			{
 				return;
@@ -317,7 +410,10 @@ namespace MoreMountains.Feedbacks
 			IsPlaying = true;
 			PlayCount++;
 			ComputeNewRandomDurationMultipliers();
+<<<<<<< HEAD
 			_totalDuration = TotalDuration;
+=======
+>>>>>>> origin/Dev
 			CheckForPauses();
             
 			if (Time.frameCount < 2)
@@ -412,7 +508,11 @@ namespace MoreMountains.Feedbacks
 			_startTime = GetTime();
 			_lastStartAt = _startTime;
 			IsPlaying = true;
+<<<<<<< HEAD
 			yield return MMFeedbacksCoroutine.WaitForUnscaled(InitialDelay);
+=======
+			yield return MMFeedbacksCoroutine.WaitForUnscaled(ComputedInitialDelay);
+>>>>>>> origin/Dev
 			PreparePlay(position, feedbacksIntensity, forceRevert);
 		}
 
@@ -469,7 +569,20 @@ namespace MoreMountains.Feedbacks
 		protected override IEnumerator HandleInitialDelayCo(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
 		{
 			IsPlaying = true;
+<<<<<<< HEAD
 			yield return MMFeedbacksCoroutine.WaitForUnscaled(InitialDelay);
+=======
+
+			if (PlayerTimescaleMode == TimescaleModes.Scaled)
+			{
+				yield return MMFeedbacksCoroutine.WaitFor(ComputedInitialDelay);
+			}
+			else
+			{
+				yield return MMFeedbacksCoroutine.WaitForUnscaled(ComputedInitialDelay);	
+			}
+			
+>>>>>>> origin/Dev
 			PreparePlay(position, feedbacksIntensity, forceRevert);
 		}
         
@@ -485,16 +598,27 @@ namespace MoreMountains.Feedbacks
 				ApplyAutoRevert();
 				this.enabled = false;
 				_shouldStop = false;
+<<<<<<< HEAD
+=======
+				PlayerCompleteFeedbacks();
+>>>>>>> origin/Dev
 				Events.TriggerOnComplete(this);
 			}
 			if (IsPlaying)
 			{
 				if (!_pauseFound)
 				{
+<<<<<<< HEAD
 					if (GetTime() - _startTime > _totalDuration)
 					{
 						_shouldStop = true;
 					}    
+=======
+					if (GetTime() - _startTime > TotalDuration)
+					{
+						_shouldStop = true;
+					}
+>>>>>>> origin/Dev
 				}
 			}
 			else
@@ -553,7 +677,11 @@ namespace MoreMountains.Feedbacks
 				{
 					Events.TriggerOnPause(this);
 					// we stay here until all previous feedbacks have finished
+<<<<<<< HEAD
 					while ((GetTime() - _lastStartAt < _holdingMax) && !SkippingToTheEnd)
+=======
+					while ((GetTime() - _lastStartAt < _holdingMax / TimescaleMultiplier) && !SkippingToTheEnd)
+>>>>>>> origin/Dev
 					{
 						yield return null;
 					}
@@ -667,6 +795,10 @@ namespace MoreMountains.Feedbacks
 				yield return null;
 			}
 			IsPlaying = false;
+<<<<<<< HEAD
+=======
+			PlayerCompleteFeedbacks();
+>>>>>>> origin/Dev
 			Events.TriggerOnComplete(this);
 			ApplyAutoRevert();
 		}
@@ -784,6 +916,25 @@ namespace MoreMountains.Feedbacks
 		{
 			Direction = Directions.BottomToTop;
 		}
+<<<<<<< HEAD
+=======
+		
+		/// <summary>
+		/// When the player is done playing, we call PlayerComplete on all its feedbacks to let them know
+		/// the player is done
+		/// </summary>
+		public virtual void PlayerCompleteFeedbacks()
+		{
+			int count = FeedbacksList.Count;
+			for (int i = 0; i < count; i++)
+			{
+				if ((FeedbacksList[i] != null) && (FeedbacksList[i].Active))
+				{
+					FeedbacksList[i].PlayerComplete();    
+				}
+			}
+		}
+>>>>>>> origin/Dev
 
 		/// <summary>
 		/// Pauses execution of a sequence, which can then be resumed by calling ResumeFeedbacks()
@@ -818,6 +969,25 @@ namespace MoreMountains.Feedbacks
 		}
 
 		/// <summary>
+<<<<<<< HEAD
+=======
+		/// Forces initial vales on all feedbacks that support it.
+		/// For example, a position feedback that'd move a Transform from A to B would move that transform to A
+		/// </summary>
+		public virtual void ForceInitialValues()
+		{
+			int count = FeedbacksList.Count;
+			for (int i = count - 1; i >= 0; i--)
+			{
+				if ((FeedbacksList[i] != null) && (FeedbacksList[i].Active))
+				{
+					FeedbacksList[i].ForceInitialValue(this.transform.position, FeedbacksIntensity);    
+				}
+			}
+		}
+
+		/// <summary>
+>>>>>>> origin/Dev
 		/// Skips to the end of a sequence of feedbacks. Note that depending on your setup, this can take up to 3 frames to complete, don't disable your player instantly, or it won't complete the skipping
 		/// </summary>
 		public virtual void SkipToTheEnd()
@@ -888,6 +1058,109 @@ namespace MoreMountains.Feedbacks
 			}
 			FeedbacksList.RemoveAt(id);
 		}
+<<<<<<< HEAD
+=======
+		
+		[Serializable]
+		/// a class used to copy feedback lists at runtime
+		private class MMF_FeedbackListCopy
+		{
+			[SerializeReference] 
+			public List<MMF_Feedback> FeedbackList;
+
+			/// <summary>
+			/// Returns a list of feedbacks copied from the list on the specified source MMF Player 
+			/// </summary>
+			/// <param name="source"></param>
+			/// <returns></returns>
+			public static List<MMF_Feedback> CopyFrom(MMF_Player source)
+			{
+				MMF_FeedbackListCopy listCopy = new MMF_FeedbackListCopy();
+				listCopy.FeedbackList = source.FeedbacksList;
+				string json = JsonUtility.ToJson(listCopy);
+				listCopy.FeedbackList = null;
+				JsonUtility.FromJsonOverwrite(json, listCopy);
+				return listCopy.FeedbackList;
+			}
+		}
+
+		/// <summary>
+		/// Replaces the current feedback list and player settings with the ones on the target MMF Player
+		/// </summary>
+		/// <param name="source"></param>
+		public virtual void CopyPlayerFrom(MMF_Player source)
+		{
+			JsonUtility.FromJsonOverwrite(JsonUtility.ToJson(source), this);
+		}
+
+		/// <summary>
+		/// Replaces the current feedback list with the feedbacks on the target MMF Player
+		/// </summary>
+		/// <param name="source"></param>
+		public virtual void CopyFeedbackListFrom(MMF_Player source)
+		{
+			FeedbacksList = MMF_FeedbackListCopy.CopyFrom(source);
+		}
+
+		/// <summary>
+		/// Adds the feedbacks on the target MMF Player to the current feedback list
+		/// </summary>
+		/// <param name="source"></param>
+		public virtual void AddFeedbackListFrom(MMF_Player source) 
+		{
+			List<MMF_Feedback> tempList = new List<MMF_Feedback>();
+			List<MMF_Feedback> tempList2 = new List<MMF_Feedback>();
+			
+			tempList = MMF_FeedbackListCopy.CopyFrom(this);
+			tempList2 = MMF_FeedbackListCopy.CopyFrom(source);
+			
+			tempList.AddRange(tempList2);
+			
+			FeedbacksList = tempList;
+		}
+
+		/// <summary>
+		/// Returns true if one or more of the feedbacks on this MMF Player have an option for automatic shaker setup, false otherwise
+		/// </summary>
+		public virtual bool HasAutomaticShakerSetup
+		{
+			get
+			{
+				if (FeedbacksList == null)
+				{
+					return false;
+				}
+				
+				int count = FeedbacksList.Count;
+				for (int i = 0; i < count; i++)
+				{
+					if (FeedbacksList[i] != null)
+					{
+						if (FeedbacksList[i].HasAutomaticShakerSetup)
+						{
+							return true;
+						}
+					}
+				}
+				return false;
+			}
+		}
+
+		/// <summary>
+		/// Calls the AutomaticShakerSetup method on all feedbacks that have it
+		/// </summary>
+		public virtual void AutomaticShakerSetup()
+		{
+			int count = FeedbacksList.Count;
+			for (int i = 0; i < count; i++)
+			{
+				if (FeedbacksList[i] != null)
+				{
+					FeedbacksList[i].AutomaticShakerSetup();    
+				}
+			}
+		}
+>>>>>>> origin/Dev
         
 		#endregion MODIFICATION
 
@@ -902,9 +1175,16 @@ namespace MoreMountains.Feedbacks
 			int count = FeedbacksList.Count;
 			for (int i = 0; i < count; i++)
 			{
+<<<<<<< HEAD
 				if ((FeedbacksList[i].IsPlaying 
 				     && !FeedbacksList[i].Timing.ExcludeFromHoldingPauses)
 				    || FeedbacksList[i].Timing.RepeatForever)
+=======
+				if ((FeedbacksList[i].IsPlaying
+				     && !FeedbacksList[i].Timing.ExcludeFromHoldingPauses)
+				    || FeedbacksList[i].Timing.RepeatForever
+				    || ((FeedbacksList[i].Timing.NumberOfRepeats > 0) && (FeedbacksList[i].PlaysLeft > 0)))
+>>>>>>> origin/Dev
 				{
 					return true;
 				}
@@ -1024,7 +1304,11 @@ namespace MoreMountains.Feedbacks
 		/// <returns></returns>
 		public override float ApplyTimeMultiplier(float duration)
 		{
+<<<<<<< HEAD
 			return duration * Mathf.Clamp(DurationMultiplier, _smallValue, float.MaxValue) * _randomDurationMultiplier;
+=======
+			return duration * Mathf.Clamp(DurationMultiplier, _smallValue, float.MaxValue) * _randomDurationMultiplier / TimescaleMultiplier;
+>>>>>>> origin/Dev
 		}
 
 		/// <summary>
@@ -1255,7 +1539,11 @@ namespace MoreMountains.Feedbacks
 			
 			if (IsPlaying)
 			{
+<<<<<<< HEAD
 				if (ForceStopFeedbacksOnDisable)
+=======
+				if (StopFeedbacksOnDisable)
+>>>>>>> origin/Dev
 				{
 					StopFeedbacks();    
 				}
@@ -1314,12 +1602,20 @@ namespace MoreMountains.Feedbacks
 		/// <summary>
 		/// Computes the total duration of the player's sequence of feedbacks
 		/// </summary>
+<<<<<<< HEAD
 		protected virtual void ComputeCachedTotalDuration()
+=======
+		public virtual void ComputeCachedTotalDuration()
+>>>>>>> origin/Dev
 		{
 			float total = 0f;
 			if (FeedbacksList == null)
 			{
+<<<<<<< HEAD
 				_cachedTotalDuration = InitialDelay;
+=======
+				_cachedTotalDuration = ComputedInitialDelay;
+>>>>>>> origin/Dev
 				return;
 			}
 			
@@ -1359,16 +1655,32 @@ namespace MoreMountains.Feedbacks
 						FeedbacksList[i].ComputeTotalDuration();
 						if (FeedbacksList[i].Pause != null)
 						{
+<<<<<<< HEAD
 							// pause
 							if (FeedbacksList[i].HoldingPause)
 							{
 								intermediateTotal += (FeedbacksList[i] as MMF_Pause).PauseDuration;
+=======
+							if (FeedbacksList[i].Timing != null && !FeedbacksList[i].Timing.ContributeToTotalDuration)
+							{
+								continue;
+							}
+							
+							// pause
+							if (FeedbacksList[i].HoldingPause)
+							{
+								intermediateTotal += ApplyTimeMultiplier((FeedbacksList[i] as MMF_Pause).PauseDuration);
+>>>>>>> origin/Dev
 								total += intermediateTotal;
 								intermediateTotal = 0f;
 							}
 							else
 							{
+<<<<<<< HEAD
 								currentPauseDelay += (FeedbacksList[i] as MMF_Pause).PauseDuration;
+=======
+								currentPauseDelay += ApplyTimeMultiplier((FeedbacksList[i] as MMF_Pause).PauseDuration);
+>>>>>>> origin/Dev
 							}
 							
 							//loops
@@ -1445,7 +1757,12 @@ namespace MoreMountains.Feedbacks
 				}
 				total += intermediateTotal;
 			}
+<<<<<<< HEAD
 			_cachedTotalDuration = InitialDelay + total;
+=======
+			_cachedTotalDuration = ComputedInitialDelay + total;
+			_cachedTotalDuration /= TimescaleMultiplier;
+>>>>>>> origin/Dev
 		}
 
 		/// <summary>

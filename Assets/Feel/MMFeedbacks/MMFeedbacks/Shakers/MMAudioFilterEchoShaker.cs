@@ -113,6 +113,7 @@ namespace MoreMountains.Feedbacks
 				_originalRelativeEcho = RelativeEcho;
 			}
 
+<<<<<<< HEAD
 			TimescaleMode = timescaleMode;
 			ShakeDuration = duration;
 			ShakeEcho = echoCurve;
@@ -120,6 +121,18 @@ namespace MoreMountains.Feedbacks
 			RemapEchoOne = remapMax * feedbacksIntensity;
 			RelativeEcho = relativeEcho;
 			ForwardDirection = forwardDirection;
+=======
+			if (!OnlyUseShakerValues)
+			{
+				TimescaleMode = timescaleMode;
+				ShakeDuration = duration;
+				ShakeEcho = echoCurve;
+				RemapEchoZero = remapMin * feedbacksIntensity;
+				RemapEchoOne = remapMax * feedbacksIntensity;
+				RelativeEcho = relativeEcho;
+				ForwardDirection = forwardDirection;
+			}
+>>>>>>> origin/Dev
 
 			Play();
 		}

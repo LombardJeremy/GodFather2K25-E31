@@ -117,6 +117,7 @@ namespace MoreMountains.Feedbacks
 				_originalRelativeFieldOfView = RelativeFieldOfView;
 			}
 
+<<<<<<< HEAD
 			TimescaleMode = timescaleMode;
 			ShakeDuration = duration;
 			ShakeFieldOfView = distortionCurve;
@@ -124,6 +125,18 @@ namespace MoreMountains.Feedbacks
 			RemapFieldOfViewOne = remapMax * feedbacksIntensity;
 			RelativeFieldOfView = relativeDistortion;
 			ForwardDirection = forwardDirection;
+=======
+			if (!OnlyUseShakerValues)
+			{
+				TimescaleMode = timescaleMode;
+				ShakeDuration = duration;
+				ShakeFieldOfView = distortionCurve;
+				RemapFieldOfViewZero = remapMin * feedbacksIntensity;
+				RemapFieldOfViewOne = remapMax * feedbacksIntensity;
+				RelativeFieldOfView = relativeDistortion;
+				ForwardDirection = forwardDirection;
+			}
+>>>>>>> origin/Dev
 
 			Play();
 		}

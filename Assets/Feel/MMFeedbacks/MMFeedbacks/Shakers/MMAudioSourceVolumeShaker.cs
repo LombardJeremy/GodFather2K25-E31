@@ -113,6 +113,7 @@ namespace MoreMountains.Feedbacks
 				_originalRelativeValues = RelativeVolume;
 			}
 
+<<<<<<< HEAD
 			TimescaleMode = timescaleMode;
 			ShakeDuration = duration;
 			ShakeVolume = volumeCurve;
@@ -120,6 +121,18 @@ namespace MoreMountains.Feedbacks
 			RemapVolumeOne = remapMax * feedbacksIntensity;
 			RelativeVolume = relativeVolume;
 			ForwardDirection = forwardDirection;
+=======
+			if (!OnlyUseShakerValues)
+			{
+				TimescaleMode = timescaleMode;
+				ShakeDuration = duration;
+				ShakeVolume = volumeCurve;
+				RemapVolumeZero = remapMin * feedbacksIntensity;
+				RemapVolumeOne = remapMax * feedbacksIntensity;
+				RelativeVolume = relativeVolume;
+				ForwardDirection = forwardDirection;
+			}
+>>>>>>> origin/Dev
 
 			Play();
 		}
