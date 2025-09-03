@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TugOfWarWin
   - TugOfWarLose
+  - Dragable
   layers:
   - Default
   - TransparentFX
