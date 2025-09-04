@@ -1,25 +1,27 @@
 using UnityEngine;
 using System;
+using UnityEngine.Audio;
 
 public class audioManager : MonoBehaviour
 {
     public static audioManager Instance;
 
-    public AudioClip[] MusicSounds, sfxSounds;
-    public AudioSource MusicSource, sfxSource;
+    public Sound[] MusicSounds, sfxSounds;
+
+    [SerializeField] AudioMixer mixer;
 
     private void Awake()
     {
-        if (Instance = null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
     }
 
-    public void PlayMusic(string name)
+    public void PlayMusic(string name, AudioSource audioSource)
     {
-        AudioClip s = Array.Find(MusicSounds, x => x.name == name);
+        Sound s = Array.Find(MusicSounds, x => x.name == name);
 
         if (s == null)
         {
@@ -27,14 +29,14 @@ public class audioManager : MonoBehaviour
         }
         else
         {
-            MusicSource.clip = s;
-            MusicSource.Play();
+            audioSource.clip = s.sound;
+            audioSource.Play();
         }
     }
 
-    public void PlaySFX(string name)
+    public void PlaySFX(string name, AudioSource audioSource)
     {
-        AudioClip s = Array.Find(sfxSounds, x => x.name == name);
+        Sound s = Array.Find(sfxSounds, x => x.name == name);
 
         if (s == null)
         {
@@ -43,7 +45,17 @@ public class audioManager : MonoBehaviour
 
         else
         {
-            sfxSource.PlayOneShot(s);
+            audioSource.PlayOneShot(s.sound);
         }
     }
+
+    public void ChangeMusicVolume(float volume)
+    {
+        mixer.SetFloat("MusicVolume", volume);
+    }
+    public void ChangeSfxVolume(float volume)
+    {
+        mixer.SetFloat("SfxVolume", volume);
+    }   
+
 }
