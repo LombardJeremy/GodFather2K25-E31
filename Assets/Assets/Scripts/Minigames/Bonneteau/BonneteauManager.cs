@@ -44,9 +44,11 @@ public class BonneteauManager : MonoBehaviour
                 if (hit)
                 {
                     IsClicked = true;
-		    OnClick.Invoke();
+		            OnClick.Invoke();
                     Debug.Log("Win");
                     asWin = true;
+                    GameManager.Instance.UpdateGameState(GameState.Win);
+                    return;
                 }
             }
             else

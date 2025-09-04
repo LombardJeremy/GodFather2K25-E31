@@ -97,5 +97,6 @@ public enum GameList
     Rope,
     Bonneteau,
     ImageMalus,
+    TargetPractice,
     EndOfList
 }

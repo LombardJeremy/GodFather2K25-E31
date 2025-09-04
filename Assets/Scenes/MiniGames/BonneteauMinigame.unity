@@ -350,6 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225964165}
   - component: {fileID: 225964164}
+  - component: {fileID: 225964166}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -411,6 +412,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &225964166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225964163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d27bc586d2eacf488c038f3a3ba0534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentState: 0
+  CurrentGame: 2
+  CurrentGameTimer: 0
 --- !u!1 &235371640
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,8 +706,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1937858427
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 8831942975800889585, guid: 614d83555bbaeab4bb8067c0c7c33671, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -781,7 +797,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.79
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
