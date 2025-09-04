@@ -2145,6 +2145,9 @@ MonoBehaviour:
   CurrentState: 0
   CurrentGame: 0
   CurrentGameTimer: 0
+  GlobalGameTimer: 0
+  numberOfLife: 3
+  minigameTimers: 
 --- !u!1 &760314555
 GameObject:
   m_ObjectHideFlags: 0
