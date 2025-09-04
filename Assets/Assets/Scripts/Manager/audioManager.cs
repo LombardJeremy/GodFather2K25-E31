@@ -5,12 +5,12 @@ public class audioManager : MonoBehaviour
 {
     public static audioManager Instance;
 
-    public AudioClip[] MusicSounds, sfxSounds;
+    public Sound[] MusicSounds, sfxSounds;
     public AudioSource MusicSource, sfxSource;
 
     private void Awake()
     {
-        if (Instance = null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -19,7 +19,7 @@ public class audioManager : MonoBehaviour
 
     public void PlayMusic(string name)
     {
-        AudioClip s = Array.Find(MusicSounds, x => x.name == name);
+        Sound s = Array.Find(MusicSounds, x => x.name == name);
 
         if (s == null)
         {
@@ -27,14 +27,14 @@ public class audioManager : MonoBehaviour
         }
         else
         {
-            MusicSource.clip = s;
+            MusicSource.clip = s.sound;
             MusicSource.Play();
         }
     }
 
     public void PlaySFX(string name)
     {
-        AudioClip s = Array.Find(sfxSounds, x => x.name == name);
+        Sound s = Array.Find(sfxSounds, x => x.name == name);
 
         if (s == null)
         {
@@ -43,7 +43,16 @@ public class audioManager : MonoBehaviour
 
         else
         {
-            sfxSource.PlayOneShot(s);
+            sfxSource.PlayOneShot(s.sound);
         }
     }
+
+    public void MusicVolume(float volume)
+    {
+        MusicSource.volume = volume;
+    }
+    public void sfxVolume(float volume)
+    {
+        sfxSource.volume = volume;
+    }   
 }
