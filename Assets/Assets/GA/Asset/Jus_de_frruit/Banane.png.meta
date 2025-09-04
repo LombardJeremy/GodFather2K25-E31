@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0f3d2c4676a83c74090d81fbd3c6aa30
+guid: a56b3e0ad52e25c4c9b7363c7ff885c5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4017913471602642613
-    second: Coquillage_0
+      213: 1064880631938504949
+    second: Banane_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Coquillage_0
+      name: Banane_0
       rect:
         serializedVersion: 2
-        x: 600
-        y: 69
-        width: 720
-        height: 789
+        x: 6
+        y: 17
+        width: 502
+        height: 434
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5bec12db30f72c730800000000000000
-      internalID: 4017913471602642613
+      spriteID: 5f853e2fa4737ce00800000000000000
+      internalID: 1064880631938504949
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Coquillage_0: 4017913471602642613
+      Banane_0: 1064880631938504949
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -8,6 +8,7 @@ public class TargetManager : MonoBehaviour
     [SerializeField] private LayerMask clickableLayers;
     [SerializeField] private GameObject[] targets;
     private int pointCounter = 0;
+    private bool asWin = false;
 
 
     private void Start()
@@ -17,24 +18,28 @@ public class TargetManager : MonoBehaviour
 
     void Update()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        if (Input.GetMouseButtonDown(0))
+        if (!asWin)
         {
-            startGame();
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, float.PositiveInfinity, clickableLayers);
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (hit)
+            if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("toucher");
-                hit.collider.gameObject.SetActive(false);
-                pointCounter += 1;
-            }
-        }
+                RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, float.PositiveInfinity, clickableLayers);
 
-        if (pointCounter >= targets.Length)
-        {
-            Debug.Log("you win");
+                if (hit)
+                {
+                    Debug.Log("toucher");
+                    hit.collider.gameObject.SetActive(false);
+                    pointCounter += 1;
+                }
+            }
+
+            if (pointCounter >= targets.Length)
+            {
+                Debug.Log("you win");
+                asWin = true;
+                GameManager.Instance.UpdateGameState(GameState.Win);
+            }
         }
     }
 

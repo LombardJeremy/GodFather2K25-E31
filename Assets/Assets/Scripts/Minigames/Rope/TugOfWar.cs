@@ -5,12 +5,6 @@ public class TugOfWar : MonoBehaviour
     public bool IsPlaying = false;
     public float FranckoStrenght;
     public float PlayerStrenght;
-        
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -33,12 +27,12 @@ public class TugOfWar : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if(collision.tag == "TugOfWarWin")
+        if(collision.CompareTag("TugOfWarWin"))
         {
             Debug.Log("You WIN !!!");
             GameManager.Instance.UpdateGameState(GameState.Win);
         }
-        else if(collision.tag == "TugOfWarLose")
+        else if(collision.CompareTag("TugOfWarLose"))
         {
             Debug.Log("You LOSE !!!");
             GameManager.Instance.UpdateGameState(GameState.Loose);
