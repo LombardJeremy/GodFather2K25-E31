@@ -25,6 +25,8 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/MainScene.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/EndScreen.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/MiniGames/MazeMinigame.unity
   - m_enabled: 1
     m_path: Assets/Scenes/MiniGames/RopeMinigame.unity

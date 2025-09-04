@@ -3080,6 +3080,9 @@ MonoBehaviour:
   CurrentState: 0
   CurrentGame: 0
   CurrentGameTimer: 0
+  GlobalGameTimer: 0
+  numberOfLife: 3
+  minigameTimers: 0200000003000000040000000500000006000000
 --- !u!4 &2071169762
 Transform:
   m_ObjectHideFlags: 0

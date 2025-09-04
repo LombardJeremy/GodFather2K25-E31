@@ -46,6 +46,10 @@ public class GameManager : MonoBehaviour
         switch (CurrentState)
         {
             case GameState.MainMenu:
+                SceneManager.LoadSceneAsync((int)GameState.MainMenu); //+2 for MainMenu & MainState
+                CurrentGameTimer = 0;
+                GlobalGameTimer = 0;
+                numberOfLife = 3;
                 break;
             case GameState.MainState:
                 break;
@@ -68,7 +72,7 @@ public class GameManager : MonoBehaviour
                 RandomizeNextState();
                 break;
             case GameState.EndGame:
-                //SceneManager.LoadSceneAsync();
+                SceneManager.LoadSceneAsync((int)GameState.EndGame); //+2 for MainMenu & MainState
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -93,7 +97,7 @@ public class GameManager : MonoBehaviour
     }
     private void LoadGame()
     {
-        SceneManager.LoadSceneAsync((int)CurrentGame + 2); //+2 for MainMenu & MainState
+        SceneManager.LoadSceneAsync((int)CurrentGame + 2); //+2 for MainMenu & MainState & EndGame
     }
 }
 
@@ -101,10 +105,10 @@ public enum GameState
 {
     MainMenu,
     MainState,
+    EndGame,
     Game,
     Win,
-    Loose,
-    EndGame,
+    Loose
 }
 
 public enum GameList
