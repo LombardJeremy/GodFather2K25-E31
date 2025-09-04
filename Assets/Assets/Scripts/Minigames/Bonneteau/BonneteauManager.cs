@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class BonneteauManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class BonneteauManager : MonoBehaviour
     private Vector2 mousePos;
     public bool IsClicked = false;
     [SerializeField] private LayerMask movableLayers;
+    [SerializeField] UnityEvent OnClick;
 
     [SerializeField] private Vector3[] cupBasePos = new Vector3[3];
     
@@ -42,6 +44,7 @@ public class BonneteauManager : MonoBehaviour
                 if (hit)
                 {
                     IsClicked = true;
+		    OnClick.Invoke();
                     Debug.Log("Win");
                     asWin = true;
                 }
