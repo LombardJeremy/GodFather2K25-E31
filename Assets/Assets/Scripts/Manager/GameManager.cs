@@ -1,4 +1,5 @@
 using System;using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int numberOfLife = 3;
     public static event Action<GameState> OnGameStateChanged;
+
+    private List<GameList> gamesDone = new List<GameList>();
 
     [SerializeField] public int[] minigameTimers;
     void Awake()
@@ -84,12 +87,17 @@ public class GameManager : MonoBehaviour
 
     public void RandomizeNextState()
     {
+        if (gamesDone.Count >= (int)GameList.EndOfList)
+        {
+            gamesDone.Clear();
+        }
         while (true)
         {
             GameList newMiniGame = (GameList)Random.Range(0, (int)GameList.EndOfList);
-            if (newMiniGame != CurrentGame)
+            if (newMiniGame != CurrentGame && !gamesDone.Contains(newMiniGame))
             {
                 CurrentGame = newMiniGame;
+                gamesDone.Add(CurrentGame);
                 break;
             }
         }
