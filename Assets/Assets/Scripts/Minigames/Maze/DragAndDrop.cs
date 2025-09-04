@@ -7,11 +7,6 @@ public class DragAndDrop : MonoBehaviour
     public bool IsDraged = false;
     [SerializeField] private LayerMask movableLayers;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
