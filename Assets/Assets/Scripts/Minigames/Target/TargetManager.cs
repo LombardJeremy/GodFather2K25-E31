@@ -1,0 +1,50 @@
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class TargetManager : MonoBehaviour
+{
+    private Vector2 mousePos;
+    [SerializeField] private LayerMask clickableLayers;
+    [SerializeField] private GameObject[] targets;
+    private int pointCounter = 0;
+
+
+    private void Start()
+    {
+        startGame();          
+    }
+
+    void Update()
+    {
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            startGame();
+            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, float.PositiveInfinity, clickableLayers);
+
+            if (hit)
+            {
+                Debug.Log("toucher");
+                hit.collider.gameObject.SetActive(false);
+                pointCounter += 1;
+            }
+        }
+
+        if (pointCounter >= targets.Length)
+        {
+            Debug.Log("you win");
+        }
+    }
+
+    public void startGame()
+    {
+        pointCounter = 0;
+        foreach (var target in targets)
+        {
+            target.gameObject.SetActive(true);
+            target.transform.position = new Vector3 ( Random.Range(-6f,6f), Random.Range(-4f, 4f), 0);
+        }
+    }
+}
