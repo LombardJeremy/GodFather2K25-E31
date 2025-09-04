@@ -106,37 +106,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_sol_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 560
-        width: 44
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2c4d3f6ce871bb8a0800000000000000
-      internalID: -6288406552702102334
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: background_sol_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 0
         y: 0
-        width: 1013
+        width: 1064
         height: 972
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -149,33 +127,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: background_sol_2
-      rect:
-        serializedVersion: 2
-        x: 1005
-        y: 339
-        width: 59
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6033d82b6f1f583b0800000000000000
-      internalID: -5510732527158086906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e3c2dbabaea048c459ac1066c6b9f881
     internalID: 0
     vertices: []
     indices: 
