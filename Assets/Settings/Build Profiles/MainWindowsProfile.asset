@@ -36,6 +36,8 @@ MonoBehaviour:
     m_path: Assets/Scenes/MiniGames/ImageMalusMinigame.unity
   - m_enabled: 1
     m_path: Assets/Scenes/MiniGames/TargetMinigame.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/TransitionScene.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []
