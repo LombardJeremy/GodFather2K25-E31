@@ -730,6 +730,9 @@ MonoBehaviour:
   CurrentState: 0
   CurrentGame: 1
   CurrentGameTimer: 0
+  GlobalGameTimer: 0
+  numberOfLife: 3
+  minigameTimers: 
 --- !u!4 &2007839171
 Transform:
   m_ObjectHideFlags: 0
@@ -850,6 +853,9 @@ MonoBehaviour:
   IsPlaying: 0
   FranckoStrenght: -0.0028
   PlayerStrenght: -0.3
+  RightPos: {fileID: 901383642}
+  LeftPos: {fileID: 939064912}
+  posAdvancement: 0
 --- !u!61 &2116939920
 BoxCollider2D:
   m_ObjectHideFlags: 0
