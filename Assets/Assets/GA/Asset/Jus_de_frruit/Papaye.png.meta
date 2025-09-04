@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5b408cbe53b98e944b7073db3716bc72
+guid: 375a7851b7a61574b9e9edfe0143d4cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7200433081375175640
-    second: Lunette_0
+      213: 8516612668496363027
+    second: Papaye_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lunette_0
+      name: Papaye_0
       rect:
         serializedVersion: 2
-        x: 632
-        y: 381
-        width: 656
-        height: 232
+        x: 18
+        y: 16
+        width: 272
+        height: 420
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8d3b65cecb31de360800000000000000
-      internalID: 7200433081375175640
+      spriteID: 31e315b5916113670800000000000000
+      internalID: 8516612668496363027
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Lunette_0: 7200433081375175640
+      Papaye_0: 8516612668496363027
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
