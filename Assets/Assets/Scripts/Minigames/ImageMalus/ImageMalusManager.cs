@@ -74,7 +74,7 @@ public class ImageMalusManager : MonoBehaviour
                 }
             }
             asWin = true;
-            GameManager.Instance.RandomizeNextState(); //next State
+            GameManager.Instance.UpdateGameState(GameState.Win); //next State
         }
     }
 

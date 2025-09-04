@@ -36,10 +36,12 @@ public class TugOfWar : MonoBehaviour
         if(collision.tag == "TugOfWarWin")
         {
             Debug.Log("You WIN !!!");
+            GameManager.Instance.UpdateGameState(GameState.Win);
         }
         else if(collision.tag == "TugOfWarLose")
         {
             Debug.Log("You LOSE !!!");
+            GameManager.Instance.UpdateGameState(GameState.Loose);
         }
         IsPlaying = false;
     }
