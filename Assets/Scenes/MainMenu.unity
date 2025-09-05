@@ -3240,7 +3240,7 @@ MonoBehaviour:
   CurrentGameTimer: 0
   GlobalGameTimer: 0
   numberOfLife: 3
-  minigameTimers: 
+  minigameTimers: 0300000003000000030000000300000003000000
 --- !u!4 &2071169762
 Transform:
   m_ObjectHideFlags: 0
