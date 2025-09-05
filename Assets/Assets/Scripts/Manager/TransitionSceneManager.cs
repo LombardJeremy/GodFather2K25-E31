@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TransitionSceneManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float timeForTransition;
     void Start()
     {
         StartCoroutine(TimerForNextGame());
@@ -12,7 +12,7 @@ public class TransitionSceneManager : MonoBehaviour
     IEnumerator TimerForNextGame()
     {
         //Animation for number of life
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(timeForTransition);
         GameManager.Instance.UpdateGameState(GameState.Win);
     }
 }

@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public bool isTransitionDone = false;
     public bool isInTransitionScene = false;
+
+    public string[] dialogueTransition;
     void Awake()
     {
         if (Instance == null)
@@ -47,13 +49,14 @@ public class GameManager : MonoBehaviour
 
         if (isTransitionDone && isInTransitionScene)
         {
-            RandomizeNextState();
             isTransitionDone = false;
             isInTransitionScene = false;
+            UpdateGameState(GameState.Game);
         }
 
         if (isTransitionDone && !isInTransitionScene)
         {
+            RandomizeNextState();
             SceneManager.LoadSceneAsync((int)GameList.EndOfList + 3); //+3 for MainMenu & MainState & EndGame && other
             isTransitionDone = false;
             isInTransitionScene = true;
@@ -119,7 +122,6 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        UpdateGameState(GameState.Game);
     }
     private void LoadGame()
     {

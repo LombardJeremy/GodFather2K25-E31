@@ -3337,9 +3337,15 @@ MonoBehaviour:
   CurrentGameTimer: 0
   GlobalGameTimer: 0
   numberOfLife: 3
-  minigameTimers: 0300000003000000030000000300000003000000
+  minigameTimers: 0c0000000c000000080000001100000009000000
   isTransitionDone: 0
   isInTransitionScene: 0
+  dialogueTransition:
+  - Prenez les lunettes !
+  - Tirez !
+  - Trouvez les lunettes !
+  - Mettez les lunettes !
+  - "D\xE9truisez les cibles !"
 --- !u!4 &2071169762
 Transform:
   m_ObjectHideFlags: 0
