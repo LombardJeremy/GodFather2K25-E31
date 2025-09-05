@@ -1,4 +1,5 @@
 using System;using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -13,9 +14,14 @@ public class GameManager : MonoBehaviour
     public float GlobalGameTimer;
 
     [SerializeField] private int numberOfLife = 3;
-    public static event Action<GameState> OnGameStateChanged;
+    public static event Action<GameState> OnTransitionStart;
+
+    private List<GameList> gamesDone = new List<GameList>();
 
     [SerializeField] public int[] minigameTimers;
+
+    public bool isTransitionDone = false;
+    public bool isInTransitionScene = false;
     void Awake()
     {
         if (Instance == null)
@@ -38,6 +44,20 @@ public class GameManager : MonoBehaviour
                 UpdateGameState(GameState.Loose);
             }
         }
+
+        if (isTransitionDone && isInTransitionScene)
+        {
+            RandomizeNextState();
+            isTransitionDone = false;
+            isInTransitionScene = false;
+        }
+
+        if (isTransitionDone && !isInTransitionScene)
+        {
+            SceneManager.LoadSceneAsync((int)GameList.EndOfList + 3); //+3 for MainMenu & MainState & EndGame && other
+            isTransitionDone = false;
+            isInTransitionScene = true;
+        }
     }
 
     public void UpdateGameState(GameState newState)
@@ -46,6 +66,10 @@ public class GameManager : MonoBehaviour
         switch (CurrentState)
         {
             case GameState.MainMenu:
+                SceneManager.LoadSceneAsync((int)GameState.MainMenu);
+                CurrentGameTimer = 0;
+                GlobalGameTimer = 0;
+                numberOfLife = 3;
                 break;
             case GameState.MainState:
                 break;
@@ -55,7 +79,8 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Win:
                 //Make Transition
-                RandomizeNextState();
+                isTransitionDone = false;
+                OnTransitionStart?.Invoke(newState);
                 break;
             case GameState.Loose:
                 numberOfLife -= 1;
@@ -65,27 +90,32 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 //Make Transition
-                RandomizeNextState();
+                isTransitionDone = false;
+                OnTransitionStart?.Invoke(newState);
                 break;
             case GameState.EndGame:
-                //SceneManager.LoadSceneAsync();
+                SceneManager.LoadSceneAsync((int)GameState.EndGame);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
         
-        OnGameStateChanged?.Invoke(newState);
         Debug.Log(newState.ToString());
     }
 
     public void RandomizeNextState()
     {
+        if (gamesDone.Count >= (int)GameList.EndOfList)
+        {
+            gamesDone.Clear();
+        }
         while (true)
         {
             GameList newMiniGame = (GameList)Random.Range(0, (int)GameList.EndOfList);
-            if (newMiniGame != CurrentGame)
+            if (newMiniGame != CurrentGame && !gamesDone.Contains(newMiniGame))
             {
                 CurrentGame = newMiniGame;
+                gamesDone.Add(CurrentGame);
                 break;
             }
         }
@@ -93,7 +123,12 @@ public class GameManager : MonoBehaviour
     }
     private void LoadGame()
     {
-        SceneManager.LoadSceneAsync((int)CurrentGame + 2); //+2 for MainMenu & MainState
+        SceneManager.LoadSceneAsync((int)CurrentGame + 3); //+3 for MainMenu & MainState & EndGame && other
+    }
+
+    public void StartGame()
+    {
+        UpdateGameState(GameState.Win);
     }
 }
 
@@ -101,10 +136,10 @@ public enum GameState
 {
     MainMenu,
     MainState,
+    EndGame,
     Game,
     Win,
-    Loose,
-    EndGame,
+    Loose
 }
 
 public enum GameList
