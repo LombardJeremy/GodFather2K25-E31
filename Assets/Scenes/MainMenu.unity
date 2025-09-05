@@ -3343,7 +3343,7 @@ MonoBehaviour:
   dialogueTransition:
   - Prenez les lunettes !
   - Tirez !
-  - Trouvez les lunettes !
+  - "Pr\xE9parez un jus d'oranges !"
   - Mettez les lunettes !
   - "D\xE9truisez les cibles !"
 --- !u!4 &2071169762
