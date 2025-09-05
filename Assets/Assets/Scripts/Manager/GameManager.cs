@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public float CurrentGameTimer;
     public float GlobalGameTimer;
 
-    [SerializeField] private int numberOfLife = 3;
+    public int numberOfLife = 3;
     public static event Action<GameState> OnTransitionStart;
 
     private List<GameList> gamesDone = new List<GameList>();

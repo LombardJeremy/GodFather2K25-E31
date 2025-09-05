@@ -17,7 +17,7 @@ public class TugOfWar : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             IsPlaying = true;
         }
