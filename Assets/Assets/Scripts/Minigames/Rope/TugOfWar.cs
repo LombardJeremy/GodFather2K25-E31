@@ -6,6 +6,8 @@ public class TugOfWar : MonoBehaviour
     public float FranckoStrenght;
     public float PlayerStrenght;
 
+    public Animator animator;
+
     [SerializeField] private GameObject RightPos;
     [SerializeField] private GameObject LeftPos;
 
@@ -28,7 +30,7 @@ public class TugOfWar : MonoBehaviour
             }
         }
         posAdvancement = (gameObject.transform.position.x - LeftPos.transform.position.x) / (RightPos.transform.position.x - LeftPos.transform.position.x);
-        
+        if(posAdvancement != null) animator.SetFloat("position", posAdvancement);
         if(gameObject.transform.position.x >= RightPos.transform.position.x)
         {
             Debug.Log("You WIN !!!");
