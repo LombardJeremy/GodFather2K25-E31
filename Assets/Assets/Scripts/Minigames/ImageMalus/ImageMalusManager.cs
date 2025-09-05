@@ -44,7 +44,7 @@ public class ImageMalusManager : MonoBehaviour
         if (asWin == false)
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+            
             if (Input.GetMouseButton(0))
             {
 
