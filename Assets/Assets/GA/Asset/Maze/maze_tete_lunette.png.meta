@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 731cab6a9040e044abaf60d7d6500833
+guid: 7d319e2f659403c47a41cfbda3c7842b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -137972784495506535
-    second: neutral_0
+      213: 7224097612411384292
+    second: maze_tete_lunette_0
+  - first:
+      213: 2963609449790027146
+    second: maze_tete_lunette_1
+  - first:
+      213: 1978263356912222227
+    second: maze_tete_lunette_2
+  - first:
+      213: 5166326365621099169
+    second: maze_tete_lunette_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +55,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.5236156, y: 0.33519495}
-  spritePixelsToUnits: 200
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: neutral_0
+      name: maze_tete_lunette_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1606
-        height: 443
+        x: 14
+        y: 119
+        width: 19
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99b4977cb72d51ef0800000000000000
-      internalID: -137972784495506535
+      spriteID: 4e1378ae086214460800000000000000
+      internalID: 7224097612411384292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maze_tete_lunette_1
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 0
+        width: 145
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a85b9bbb71bd02920800000000000000
+      internalID: 2963609449790027146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maze_tete_lunette_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 26
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 310cce4ba04347b10800000000000000
+      internalID: 1978263356912222227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maze_tete_lunette_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 52
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aa9498057a72b740800000000000000
+      internalID: 5166326365621099169
       vertices: []
       indices: 
       edges: []
@@ -125,8 +200,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      neutral_0: -137972784495506535
+      maze_tete_lunette_0: 7224097612411384292
+      maze_tete_lunette_1: 2963609449790027146
+      maze_tete_lunette_2: 1978263356912222227
+      maze_tete_lunette_3: 5166326365621099169
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
