@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     public GameList CurrentGame;
 
     public float CurrentGameTimer;
-    
-    
+    public float GlobalGameTimer;
 
+    [SerializeField] private int numberOfLife = 3;
     public static event Action<GameState> OnGameStateChanged;
+
+    [SerializeField] public int[] minigameTimers;
     void Awake()
     {
         if (Instance == null)
@@ -28,7 +30,13 @@ public class GameManager : MonoBehaviour
         if (CurrentState == GameState.Game)
         {
             CurrentGameTimer += Time.deltaTime;
-            int CurrentGameTimerS = Mathf.FloorToInt(CurrentGameTimer % 60);
+            GlobalGameTimer += Time.deltaTime;
+            int currentGameTimerS = Mathf.FloorToInt(CurrentGameTimer % 60);
+            if (minigameTimers[(int)CurrentGame] <= currentGameTimerS)
+            {
+                CurrentGameTimer = 0;
+                UpdateGameState(GameState.Loose);
+            }
         }
     }
 
@@ -50,8 +58,17 @@ public class GameManager : MonoBehaviour
                 RandomizeNextState();
                 break;
             case GameState.Loose:
+                numberOfLife -= 1;
+                if (numberOfLife == 0)
+                {
+                    UpdateGameState(GameState.EndGame);
+                    return;
+                }
                 //Make Transition
                 RandomizeNextState();
+                break;
+            case GameState.EndGame:
+                //SceneManager.LoadSceneAsync();
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -80,15 +97,14 @@ public class GameManager : MonoBehaviour
     }
 }
 
-
-
 public enum GameState
 {
     MainMenu,
     MainState,
     Game,
     Win,
-    Loose   
+    Loose,
+    EndGame,
 }
 
 public enum GameList

@@ -1,12 +1,14 @@
 using UnityEngine;
 using System;
+using UnityEngine.Audio;
 
 public class audioManager : MonoBehaviour
 {
     public static audioManager Instance;
 
     public Sound[] MusicSounds, sfxSounds;
-    public AudioSource MusicSource, sfxSource;
+
+    [SerializeField] AudioMixer mixer;
 
     private void Awake()
     {
@@ -17,7 +19,7 @@ public class audioManager : MonoBehaviour
         }
     }
 
-    public void PlayMusic(string name)
+    public void PlayMusic(string name, AudioSource audioSource)
     {
         Sound s = Array.Find(MusicSounds, x => x.name == name);
 
@@ -27,12 +29,12 @@ public class audioManager : MonoBehaviour
         }
         else
         {
-            MusicSource.clip = s.sound;
-            MusicSource.Play();
+            audioSource.clip = s.sound;
+            audioSource.Play();
         }
     }
 
-    public void PlaySFX(string name)
+    public void PlaySFX(string name, AudioSource audioSource)
     {
         Sound s = Array.Find(sfxSounds, x => x.name == name);
 
@@ -43,16 +45,17 @@ public class audioManager : MonoBehaviour
 
         else
         {
-            sfxSource.PlayOneShot(s.sound);
+            audioSource.PlayOneShot(s.sound);
         }
     }
 
-    public void MusicVolume(float volume)
+    public void ChangeMusicVolume(float volume)
     {
-        MusicSource.volume = volume;
+        mixer.SetFloat("MusicVolume", volume);
     }
-    public void sfxVolume(float volume)
+    public void ChangeSfxVolume(float volume)
     {
-        sfxSource.volume = volume;
+        mixer.SetFloat("SfxVolume", volume);
     }   
+
 }

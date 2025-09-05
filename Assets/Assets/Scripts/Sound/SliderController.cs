@@ -7,11 +7,11 @@ public class SliderController : MonoBehaviour
 
     public void MusicVolume()
     {
-        audioManager.Instance.MusicVolume(_musicSlider.value);
+        audioManager.Instance.ChangeMusicVolume(_musicSlider.value * 80 - 80);
     }
 
     public void sfxVolume()
     {
-        audioManager.Instance.sfxVolume(_sfxSlider.value);
+        audioManager.Instance.ChangeSfxVolume(_sfxSlider.value * 80 - 80);
     }
 }
