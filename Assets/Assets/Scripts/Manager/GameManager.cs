@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Loose:
                 numberOfLife -= 1;
-                if (numberOfLife == 0)
+                if (numberOfLife <= 0)
                 {
                     UpdateGameState(GameState.EndGame);
                     return;
