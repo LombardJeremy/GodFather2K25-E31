@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TugOfWar : MonoBehaviour
 {
@@ -6,8 +7,11 @@ public class TugOfWar : MonoBehaviour
     public float FranckoStrenght;
     public float PlayerStrenght;
 
+    public Animator animator;
+
     [SerializeField] private GameObject RightPos;
     [SerializeField] private GameObject LeftPos;
+    [SerializeField] UnityEvent OnClick;
 
     public float posAdvancement;
 
@@ -25,10 +29,11 @@ public class TugOfWar : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 gameObject.transform.position += Vector3.left * PlayerStrenght;
+                OnClick.Invoke();
             }
         }
         posAdvancement = (gameObject.transform.position.x - LeftPos.transform.position.x) / (RightPos.transform.position.x - LeftPos.transform.position.x);
-        
+        if(posAdvancement != null) animator.SetFloat("position", posAdvancement);
         if(gameObject.transform.position.x >= RightPos.transform.position.x)
         {
             Debug.Log("You WIN !!!");

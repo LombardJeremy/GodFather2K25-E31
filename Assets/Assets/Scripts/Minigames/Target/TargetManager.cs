@@ -1,12 +1,15 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Events;
+
 
 public class TargetManager : MonoBehaviour
 {
     private Vector2 mousePos;
     [SerializeField] private LayerMask clickableLayers;
     [SerializeField] private GameObject[] targets;
+    [SerializeField] UnityEvent OnClick;
     private int pointCounter = 0;
     private bool asWin = false;
 
@@ -29,6 +32,7 @@ public class TargetManager : MonoBehaviour
                 if (hit)
                 {
                     Debug.Log("toucher");
+                    OnClick.Invoke();
                     hit.collider.gameObject.SetActive(false);
                     pointCounter += 1;
                 }
