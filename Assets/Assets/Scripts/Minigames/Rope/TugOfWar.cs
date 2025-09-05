@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TugOfWar : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TugOfWar : MonoBehaviour
 
     [SerializeField] private GameObject RightPos;
     [SerializeField] private GameObject LeftPos;
+    [SerializeField] UnityEvent OnClick;
 
     public float posAdvancement;
 
@@ -27,6 +29,7 @@ public class TugOfWar : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 gameObject.transform.position += Vector3.left * PlayerStrenght;
+                OnClick.Invoke();
             }
         }
         posAdvancement = (gameObject.transform.position.x - LeftPos.transform.position.x) / (RightPos.transform.position.x - LeftPos.transform.position.x);
