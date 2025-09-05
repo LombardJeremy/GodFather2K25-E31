@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2138aa10948d14f4fb270fbd8704e0be
+guid: 83db08de52493ad498b8bb1c194bef8c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5564129271127577820
-    second: corde_0
+      213: 4116547160596893876
+    second: avion_pub_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: corde_0
+      name: avion_pub_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 39
-        height: 880
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 1315
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd499e19712c73d40800000000000000
-      internalID: 5564129271127577820
+      spriteID: 4b0558805d9e02930800000000000000
+      internalID: 4116547160596893876
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7aac39d960a0a4646915a57605525524
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      corde_0: 5564129271127577820
+      avion_pub_0: 4116547160596893876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
