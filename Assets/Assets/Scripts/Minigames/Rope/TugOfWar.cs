@@ -6,6 +6,11 @@ public class TugOfWar : MonoBehaviour
     public float FranckoStrenght;
     public float PlayerStrenght;
 
+    [SerializeField] private GameObject RightPos;
+    [SerializeField] private GameObject LeftPos;
+
+    public float posAdvancement;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -22,21 +27,17 @@ public class TugOfWar : MonoBehaviour
                 gameObject.transform.position += Vector3.left * PlayerStrenght;
             }
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+        posAdvancement = (gameObject.transform.position.x - LeftPos.transform.position.x) / (RightPos.transform.position.x - LeftPos.transform.position.x);
         
-        if(collision.CompareTag("TugOfWarWin"))
+        if(gameObject.transform.position.x >= RightPos.transform.position.x)
         {
             Debug.Log("You WIN !!!");
             GameManager.Instance.UpdateGameState(GameState.Win);
         }
-        else if(collision.CompareTag("TugOfWarLose"))
+        if(gameObject.transform.position.x <= LeftPos.transform.position.x)
         {
             Debug.Log("You LOSE !!!");
             GameManager.Instance.UpdateGameState(GameState.Loose);
         }
-        IsPlaying = false;
     }
 }
