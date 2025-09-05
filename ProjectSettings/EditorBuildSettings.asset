@@ -6,8 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: c28cfbab778990c4da3045bd9eacff2c
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: f2ce26d6e37b4dd4e91ba79d393e394e
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/MazeMinigame.unity
+    guid: 50d06cff38b8c6140b0f6a2ae1b84c1c
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/RopeMinigame.unity
+    guid: 8c72d5d21cee9184a85710dca8b0f63d
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/OrangeMinigame.unity
+    guid: b4c04d64841f6a6468bd30c7c08f1a5e
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/ImageMalusMinigame.unity
+    guid: 59e8c025497f488468e55c928ab3268f
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/TargetMinigame.unity
+    guid: af2642aa8a843514ab008264d78e75f2
+  - enabled: 1
+    path: Assets/Scenes/TransitionScene.unity
+    guid: ec23efa7401f15341858794ffafadf57
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

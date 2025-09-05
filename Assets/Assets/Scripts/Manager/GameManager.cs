@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
             case GameState.Win:
                 //Make Transition
                 isTransitionDone = false;
+                CurrentGameTimer = 0;
                 OnTransitionStart?.Invoke(newState);
                 break;
             case GameState.Loose:
@@ -94,6 +95,7 @@ public class GameManager : MonoBehaviour
                 }
                 //Make Transition
                 isTransitionDone = false;
+                CurrentGameTimer = 0;
                 OnTransitionStart?.Invoke(newState);
                 break;
             case GameState.EndGame:

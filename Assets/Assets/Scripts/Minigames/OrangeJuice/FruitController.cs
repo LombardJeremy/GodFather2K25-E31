@@ -4,6 +4,7 @@ public class FruitController : MonoBehaviour
 {
     private Vector2 mousePos;
     public bool IsDraged = false;
+    private RaycastHit2D lastFruitsPickup;
     [SerializeField] private LayerMask movableLayers;
 
     private void Start()
@@ -14,8 +15,14 @@ public class FruitController : MonoBehaviour
     void Update()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+        if (IsDraged)
+        {
+            if (lastFruitsPickup.transform) lastFruitsPickup.transform.position = mousePos;
+            //lastFruitsPickup.rigidbody.linearVelocity = Vector2.zero;
+        }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
 
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, float.PositiveInfinity, movableLayers);
@@ -23,20 +30,14 @@ public class FruitController : MonoBehaviour
             if (hit)
             {
                 IsDraged = true;
+                lastFruitsPickup = hit;
             }
             else
             {
                 IsDraged = false;
             }
-
-            if (IsDraged)
-            {
-                hit.transform.position = mousePos;
-                hit.rigidbody.linearVelocity = Vector2.zero;
-            }
-
         }
-        else
+        if (Input.GetMouseButtonUp(0))
         {
             IsDraged = false;
         }
