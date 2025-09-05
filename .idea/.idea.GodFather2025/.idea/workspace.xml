@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19588fd1-1c4d-4c9f-83ad-a87d4334e0a4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GodFather2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GodFather2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/SO.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/Bonneteau/BonneteauManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/Bonneteau/BonneteauManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/ImageMalus/DragableGlassSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/ImageMalus/DragableGlassSlot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/Maze/DragAndDrop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/Maze/DragAndDrop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/Maze/MazeCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/Maze/MazeCollision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/Rope/TugOfWar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/Rope/TugOfWar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/Target/TargetManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/Minigames/Target/TargetManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MiniGames/BonneteauMinigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MiniGames/BonneteauMinigame.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MiniGames/ImageMalusMinigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MiniGames/ImageMalusMinigame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MiniGames/MazeMinigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MiniGames/MazeMinigame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MiniGames/RopeMinigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MiniGames/RopeMinigame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MiniGames/TargetMinigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MiniGames/TargetMinigame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +30,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "GP-GameManager",
+    "git-widget-placeholder": "GP-Maze",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -109,6 +96,7 @@
       <workItem from="1756824748417" duration="442000" />
       <workItem from="1756885005289" duration="2422000" />
       <workItem from="1756990328280" duration="1147000" />
+      <workItem from="1757057973262" duration="1036000" />
     </task>
     <servers />
   </component>
