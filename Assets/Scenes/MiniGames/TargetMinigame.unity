@@ -1402,7 +1402,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.036257, z: 1}
-  m_LocalScale: {x: 1.0495, y: 1.0495, z: 1.0495}
+  m_LocalScale: {x: 1.1978992, y: 1.1978992, z: 1.1978992}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1916,7 +1916,7 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 7734493775667920968
+  - rid: 7734493775667920970
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   StopFeedbacksOnDisable: 0
@@ -1924,11 +1924,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 7734493775667920968
+    - rid: 7734493775667920970
       type: {class: MMF_CameraShake, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: 406481460
+        UniqueID: 893815836
         Label: Camera Shake
         ChannelMode: 0
         Channel: 0
@@ -1945,7 +1945,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 22
+          PlayCount: 59
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -2000,12 +2000,12 @@ MonoBehaviour:
         DebugActive: 0
         RepeatUntilStopped: 0
         CameraShakeProperties:
-          Duration: 0.1
+          Duration: 0.3
           Amplitude: 0.2
           Frequency: 40
-          AmplitudeX: 1
-          AmplitudeY: 1
-          AmplitudeZ: 1
+          AmplitudeX: 4
+          AmplitudeY: 4
+          AmplitudeZ: 4
 --- !u!4 &1830375478
 Transform:
   m_ObjectHideFlags: 0
